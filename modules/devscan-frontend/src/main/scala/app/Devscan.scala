@@ -1,4 +1,4 @@
-package myorg
+package app
 
 import cats.effect.IO
 import tyrian.Html.*

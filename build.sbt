@@ -1,4 +1,4 @@
-ThisBuild / organization := "org.leisuremeta"
+ThisBuild / organization := "org.inverseplayers"
 ThisBuild / version := "0.0.1-SNAPSHOT"
 ThisBuild / scalaVersion := V.Scala
 ThisBuild / scalafixDependencies += "com.github.liancheng" %% "organize-imports" % "0.6.0"
