@@ -7,14 +7,8 @@ import M.*
 object View:
 
   def view(model: Model): Html[Msg] =
-    div(
+    div(`class` := "text-2xl font-bold bg-slate-300")(
       button(onClick(Msg.Decrement))("-"),
       div(model.toString),
       button(onClick(Msg.Increment))("+")
     )
-    // div(
-    //   div(`class` := "main")(
-    //     NavView.view(model),
-    //     PageView.view(model)
-    //   )
-    // )
