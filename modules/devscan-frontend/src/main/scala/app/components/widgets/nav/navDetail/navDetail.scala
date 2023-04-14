@@ -3,10 +3,11 @@ import tyrian.*
 import cats.effect.IO
 import tyrian.Html.*
 import M.*
+import css.*
 
 object NavDetailView:
 
   def view(model: Model): Html[Msg] =
-    div(`class` := "text-2xl font-bold bg-slate-300")(
+    div(`class` := s"$nav_detail")(
       "네비입니다 입니다"
     )
