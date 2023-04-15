@@ -20,17 +20,6 @@ object Css:
   enum Target:
     case text extends Target
     case bg extends Target
-  // enum Color:
-  //   case gray extends Color
-  //   case orange extends Color
-  // enum ColorNum:
-  //   case _100 extends ColorNum
-  //   case _200 extends ColorNum
-
-  // def genColor(target: Target, color: Color, num: ColorNum) =
-  //   s"${target}-${color}-${num}"
-
-  // trait Target:
 
   object text:
 
@@ -43,14 +32,3 @@ object Css:
     val white = "text-white"
     def gray(num: Int) = s"text-gray-$num"
     val black = "text-black"
-
-// object CCC:
-//   // case class Targets(target: Target = Target.text)
-
-//   // val a = new Targets().target
-// // css().text().gray()._100
-//   val todo = "CCC().text().gray()._100"
-//   case class ccc(text: String = "text", bg: String = "bg")
-//   val cc = ccc()
-
-//   val x = cc.bg
