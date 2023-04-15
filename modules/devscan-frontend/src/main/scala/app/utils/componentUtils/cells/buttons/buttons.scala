@@ -4,9 +4,10 @@ import cats.effect.IO
 import tyrian.Html.*
 import M.*
 import Css.*
+import CssCase.*
 
 enum Cell:
-  case Button(data: String = "", css: String = "cell") extends Cell
+  case Button(data: String = "", css: Tailwind) extends Cell
   case NavDetail_Title(data: String = "", css: String = "cell") extends Cell
   case None(data: String = "", css: String = "cell") extends Cell
 
@@ -31,7 +32,7 @@ object gen:
               `class` := s"$button_sub"
             )(
               span(
-                `class` := s"$icon" + s" $css"
+                `class` := s"$icon" + genCss(css)
               )(data)
             )
           )

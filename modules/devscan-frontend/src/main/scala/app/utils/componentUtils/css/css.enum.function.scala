@@ -36,8 +36,11 @@ object CssCase:
     val _50 = Point.Point_P50
     val _100 = Point.Point_P100
     val _200 = Point.Point_P200
+    val _300 = Point.Point_P300
+    val _400 = Point.Point_P400
+    val _500 = Point.Point_P500
 
-  // def genCss(t: Target)(c: Color)(p: Point): String =
-  //   s"${t.value}-${c.value}-${p.value}"
-  val genCss: (Target) => String = (t: Target) => s"${t.value}"
-  val add = (a: Int) => (b: Int) => a + b
+  case class Tailwind(t: Target, c: Color, p: Point)
+
+  def genCss(css: Tailwind): String =
+    s" ${css.t.value}-${css.c.value}-${css.p.value}"

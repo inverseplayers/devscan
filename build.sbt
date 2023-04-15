@@ -40,7 +40,7 @@ lazy val devscanFrontend = (project in file("modules/devscan-frontend"))
   )
 lazy val testModule = (project in file("modules/test-module"))
   .settings(
-    name := "sc-project",
+    name := "text-module",
     version := "0.1.0-SNAPSHOT",
     libraryDependencies ++= Seq(
       // cats
