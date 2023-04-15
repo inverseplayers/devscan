@@ -5,10 +5,13 @@ import tyrian.Html.*
 import M.*
 import Css.*
 import CssCase.*
+import CssCase.Target.*
+import CssCase.Color.*
+import CssCase.Point.*
 
 enum Cell:
   case Button(data: String = "", css: Tailwind) extends Cell
-  case NavDetail_Title(data: String = "", css: String = "cell") extends Cell
+  case NavDetail_Row(data: String = "", css: String = "cell") extends Cell
   case None(data: String = "", css: String = "cell") extends Cell
 
   def view(model: Model): Html[Msg] =
@@ -36,11 +39,11 @@ object gen:
               )(data)
             )
           )
-        case Cell.NavDetail_Title(data, css) =>
+        case Cell.NavDetail_Row(data, css) =>
           div(
-            `class` := s"${Css.text.gray(100)}"
+            `class` := s"${genCss(Tailwind(_Text, _Gray, _400))} pl-[20px] pt-[4px] text-[12px] font-[500]"
           )(
-            TextGen.NavDetail.title
+            data
           )
         case _ => div()
     )

@@ -15,11 +15,11 @@ object NavHeadView:
       gen.cell(
         Cell.Button(
           "content_copy",
-          Tailwind(_Text, _Gray, _500)
+          Tailwind(_Text, _Gray, _100)
         ),
         Cell.Button(
           "search",
-          Tailwind(_Text, _Gray, _100)
+          Tailwind(_Text, _Gray, _500)
         )
       )
     )
