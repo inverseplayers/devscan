@@ -3,7 +3,7 @@ import tyrian.*
 import cats.effect.IO
 import tyrian.Html.*
 import M.*
-import css.*
+import Css.*
 
 object NavView:
 

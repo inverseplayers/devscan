@@ -5,9 +5,9 @@ import tyrian.Html.*
 import M.*
 import Css.*
 
-object PageView:
+object FileSearchNavView:
 
   def view(model: Model): Html[Msg] =
-    div(`class` := s"$page")(
-      "페이지 입니다"
+    div(`class` := s"$nav_detail")(
+      gen.cell(Cell.NavDetail_Title())
     )

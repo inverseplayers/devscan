@@ -3,11 +3,11 @@ import tyrian.*
 import cats.effect.IO
 import tyrian.Html.*
 import M.*
-import css.*
+// import css.*
 
 object NavBodyView:
+  def render(model: Model): Html[Msg] =
+    FileSearchNavView.view(model)
 
   def view(model: Model): Html[Msg] =
-    div(`class` := s"$nav_detail")(
-      "네비입니다 입니다"
-    )
+    NavBodyView.render(model)

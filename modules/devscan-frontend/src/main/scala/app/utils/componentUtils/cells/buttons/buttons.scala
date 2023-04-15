@@ -3,17 +3,19 @@ import tyrian.*
 import cats.effect.IO
 import tyrian.Html.*
 import M.*
-import css.*
+import Css.*
 
 enum Cell:
-  case Button(data: String, css: String = "cell") extends Cell
+  case Button(data: String = "", css: String = "cell") extends Cell
+  case NavDetail_Title(data: String = "", css: String = "cell") extends Cell
+  case None(data: String = "", css: String = "cell") extends Cell
 
   def view(model: Model): Html[Msg] =
     button(
       `class` := s"$button_sub"
     )(
       span(
-        `class` := s"$icon" + s" ${css.text.white}"
+        `class` := s"$icon" + s" ${Css.text.white}"
       )("content_copy")
     )
 
@@ -33,5 +35,12 @@ object gen:
               )(data)
             )
           )
+        case Cell.NavDetail_Title(data, css) =>
+          div(
+            `class` := s"${Css.text.gray(100)}"
+          )(
+            TextGen.NavDetail.title
+          )
+        case _ => div()
     )
     .toList
