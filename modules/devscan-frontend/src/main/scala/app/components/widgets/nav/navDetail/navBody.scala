@@ -5,7 +5,7 @@ import tyrian.Html.*
 import M.*
 import css.*
 
-object NavDetailView:
+object NavBodyView:
 
   def view(model: Model): Html[Msg] =
     div(`class` := s"$nav_detail")(
