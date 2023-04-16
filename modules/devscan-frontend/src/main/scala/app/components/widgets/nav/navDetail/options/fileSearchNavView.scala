@@ -7,6 +7,7 @@ import Css.*
 
 object FileSearchNavView:
   val sample = "https://svelte.dev/tutorial/svelte-self"
+  val sample2 = "https://jolly-sally.tistory.com/127"
   val arrow = "△ ▽ ◁ ▷"
   val arrow2 = "▲ ▼ ◀ ▶"
   val arrow3 = "⟳ ⟲"
