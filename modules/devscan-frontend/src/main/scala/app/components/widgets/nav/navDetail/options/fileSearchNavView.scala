@@ -8,6 +8,8 @@ import Css.*
 object FileSearchNavView:
   val sample = "https://svelte.dev/tutorial/svelte-self"
   val sample2 = "https://jolly-sally.tistory.com/127"
+  val sample3 = "https://www.baeldung.com/jackson-json-node-tree-model"
+  val sample4 = "json2caseclass"
   val arrow = "△ ▽ ◁ ▷"
   val arrow2 = "▲ ▼ ◀ ▶"
   val arrow3 = "⟳ ⟲"
