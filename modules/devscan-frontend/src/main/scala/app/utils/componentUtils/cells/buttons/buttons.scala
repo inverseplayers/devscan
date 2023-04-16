@@ -41,7 +41,7 @@ object gen:
           )
         case Cell.NavDetail_Row(data, css) =>
           div(
-            `class` := s"${genCss(Tailwind(_Text, _Gray, _400))} pl-[20px] pt-[4px] text-[12px] font-[500]"
+            `class` := s"${genCss(Tailwind(_Text, _Gray, _400))} pl-[2px] pt-[4px] text-[12px] font-[500]"
           )(
             data
           )
