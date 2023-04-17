@@ -24,28 +24,14 @@ lazy val root = (project in file("."))
     testModule
   )
 
-lazy val devscanFrontend = (project in file("modules/devscan-frontend"))
-  .enablePlugins(ScalaJSPlugin)
-  .settings(Dependencies.devscanFrontend)
+lazy val devscanCats = (project in file("modules/devscan-cats"))
   .settings(
-    name := "devscan-frontend",
-    version := "0.0.1",
-    organization := "inverseplayers",
-    scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) }
-
-    // 불필요한세팅
-    //   scalafixOnCompile := true,
-    //   semanticdbEnabled := true,
-    //   semanticdbVersion := scalafixSemanticdb.revision,
-    //   autoAPIMappings := true
-  )
-lazy val testModule = (project in file("modules/test-module"))
-  .settings(
-    name := "text-module",
+    name := "devscan-cats",
+    fork in run := true,
     version := "0.1.0-SNAPSHOT",
     libraryDependencies ++= Seq(
       // cats
-      "org.typelevel" %% "cats-effect" % "3.3.1",
+      "org.typelevel" %% "cats-effect" % "3.4.9",
       "org.typelevel" %% "cats-core" % "2.7.0",
       "org.typelevel" %% "munit-cats-effect-3" % "1.0.7" % Test,
 
@@ -64,7 +50,23 @@ lazy val testModule = (project in file("modules/test-module"))
       "io.circe" %% "circe-refined" % V.circe
     )
   )
-lazy val devscanCats = (project in file("modules/devscan-cats"))
+
+lazy val devscanFrontend = (project in file("modules/devscan-frontend"))
+  .enablePlugins(ScalaJSPlugin)
+  .settings(Dependencies.devscanFrontend)
+  .settings(
+    name := "devscan-frontend",
+    version := "0.0.1",
+    organization := "inverseplayers",
+    scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) }
+
+    // 불필요한세팅
+    //   scalafixOnCompile := true,
+    //   semanticdbEnabled := true,
+    //   semanticdbVersion := scalafixSemanticdb.revision,
+    //   autoAPIMappings := true
+  )
+lazy val testModule = (project in file("modules/test-module"))
   .settings(
     name := "text-module",
     version := "0.1.0-SNAPSHOT",

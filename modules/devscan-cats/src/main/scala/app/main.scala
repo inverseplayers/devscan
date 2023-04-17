@@ -1,7 +1,7 @@
 package CatsApp
 
-import cats.effect.{IO, IOApp}
+import cats.effect.{IO, IOApp, ExitCode}
 
-object HelloWorld extends IOApp.Simple {
-  val run = IO.println("Hello, World!")
-}
+object Main extends IOApp:
+  override def run(args: List[String]): IO[ExitCode] =
+    IO.println("Hello, World!").as(ExitCode.Success)
