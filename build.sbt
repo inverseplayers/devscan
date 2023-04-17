@@ -20,6 +20,7 @@ val Dependencies = new {
 lazy val root = (project in file("."))
   .aggregate(
     devscanFrontend,
+    devscanCats,
     testModule
   )
 
@@ -39,6 +40,31 @@ lazy val devscanFrontend = (project in file("modules/devscan-frontend"))
     //   autoAPIMappings := true
   )
 lazy val testModule = (project in file("modules/test-module"))
+  .settings(
+    name := "text-module",
+    version := "0.1.0-SNAPSHOT",
+    libraryDependencies ++= Seq(
+      // cats
+      "org.typelevel" %% "cats-effect" % "3.3.1",
+      "org.typelevel" %% "cats-core" % "2.7.0",
+      "org.typelevel" %% "munit-cats-effect-3" % "1.0.7" % Test,
+
+      // process csv
+      "au.com.bytecode" % "opencsv" % "2.4",
+
+      // get json data from test api
+      "com.lihaoyi" %% "requests" % "0.8.0",
+
+      // write module
+      "com.lihaoyi" %% "os-lib" % "0.9.1",
+
+      // parser
+      "io.circe" %% "circe-generic" % V.circe,
+      "io.circe" %% "circe-parser" % V.circe,
+      "io.circe" %% "circe-refined" % V.circe
+    )
+  )
+lazy val devscanCats = (project in file("modules/devscan-cats"))
   .settings(
     name := "text-module",
     version := "0.1.0-SNAPSHOT",
