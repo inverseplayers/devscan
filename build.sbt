@@ -13,7 +13,10 @@ val Dependencies = new {
   lazy val devscanFrontend = Seq(
     libraryDependencies ++= Seq(
       "io.indigoengine" %%% "tyrian-io" % V.tyrian,
-      "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.13.0"
+      "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.13.0",
+      "io.circe" %%% "circe-core" % V.circe,
+      "io.circe" %%% "circe-generic" % V.circe,
+      "io.circe" %%% "circe-parser" % V.circe
     )
   )
 }
