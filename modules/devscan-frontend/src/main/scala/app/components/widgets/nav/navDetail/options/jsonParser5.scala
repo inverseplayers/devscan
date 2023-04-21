@@ -21,8 +21,7 @@ object JsonParser5:
   // Define the HTML template for displaying the keys and values
   val template: MyObject => Html[Msg] = (d) =>
     div(
-      div(d.key),
-      div(d.value)
+      `class` := "text-white"
       // span(
       //   onClick { obj =>
       //     obj.copy(value =
@@ -36,7 +35,7 @@ object JsonParser5:
       //     self(MyObject(key, value))
       //   }
       // )
-    )
+    )(div(d.key), div(d.value))
 
   // Render the HTML template with the initial object state
   val initialObject = MyObject("JSON", "0")
