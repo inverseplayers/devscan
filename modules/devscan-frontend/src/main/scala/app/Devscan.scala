@@ -3,7 +3,6 @@ package app
 import cats.effect.IO
 import tyrian.Html.*
 import tyrian.*
-import M.*
 
 import scala.scalajs.js.annotation.*
 
@@ -24,5 +23,5 @@ object Devscan extends TyrianApp[Msg, Model]:
 
 // type Model = Int
 
-enum Msg:
-  case Increment, Decrement
+// enum Msg:
+//   case Increment, Decrement

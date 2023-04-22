@@ -2,7 +2,6 @@ package app
 import tyrian.*
 import cats.effect.IO
 import tyrian.Html.*
-import M.*
 // import css.*
 
 object NavBodyView:

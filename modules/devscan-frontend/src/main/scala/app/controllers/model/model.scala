@@ -1,7 +1,6 @@
 package app
 
-object M:
-
-  final case class Model(
-      pointer: Int
-  )
+final case class Model(
+    pointer: Int,
+    appStates: List[StateCase]
+)

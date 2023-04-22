@@ -2,7 +2,6 @@ package app
 import tyrian.*
 import cats.effect.IO
 import tyrian.Html.*
-import M.*
 import Css.*
 import CssCase.*
 import CssCase.Target.*
@@ -14,12 +13,14 @@ object NavHeadView:
     nav(`class` := s"$navs")(
       gen.cell(
         Cell.Button(
-          "content_copy",
-          Tailwind(_Text, _Gray, _100)
+          PageCase.Page_Finders(),
+          List(Tailwind(_Text, _Gray, _500), Tailwind(_Text, _Gray, _100)),
+          model
         ),
         Cell.Button(
-          "search",
-          Tailwind(_Text, _Gray, _500)
+          PageCase.Page_Searchs(),
+          List(Tailwind(_Text, _Gray, _500), Tailwind(_Text, _Gray, _100)),
+          model
         )
       )
     )
