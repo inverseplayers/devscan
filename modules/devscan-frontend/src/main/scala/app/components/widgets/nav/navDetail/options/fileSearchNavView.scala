@@ -53,6 +53,6 @@ object FileSearchNavView:
         )
       ),
       // div()
-      JsonParser4.view(model)
+      JsonParser.view(model)
       // div()()
     )
