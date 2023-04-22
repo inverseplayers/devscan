@@ -5,12 +5,9 @@ import tyrian.Html.*
 import M.*
 import Css.*
 import scala.util.chaining.*
-
 import scala.scalajs.js.Dynamic.{global => g}
-
 import io.circe.{Json, JsonObject}
-import app.JsonData.getJsonData
-import app.JsonData.jsonString
+import app.JsonData.*
 
 object JsonParser:
 
@@ -50,16 +47,19 @@ object JsonParser:
     obj => s"Object[${obj.size}]"
   )
 
-  def template(key: String, json: Json): Html[Nothing] =
+  def template(key: String, json: Json, l: List[Int]): Html[Nothing] =
     div(`class` := "text-white")(
-      div()(s"$key : ${getValue(json)}"),
+      div(gen.cell(Cell.NavDetail_Row({
+        l.map(a => "ㅤ").reduce((a, b) => a + b)
+      } + s"$key : ${getValue(json)}"))),
       div()(
         {
           pipeGetEntries(json).map((k, v) => {
-            template(k, v)
+            template(k, v, 1 :: l)
           })
         }
       )
     )
 
-  def view(model: Model): Html[Msg] = template("JSON", getJsonData(jsonString))
+  def view(model: Model): Html[Msg] =
+    template("구인", getJsonData(jsonString), List(1))

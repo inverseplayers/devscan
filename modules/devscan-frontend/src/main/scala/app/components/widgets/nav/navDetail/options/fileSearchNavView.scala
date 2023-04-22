@@ -21,10 +21,10 @@ object FileSearchNavView:
     div(`class` := s"$nav_detail")(
       div(
         gen.cell(
-          Cell.NavDetail_Row("▶ㅤ" + TextGen.NavDetail.title),
-          Cell.NavDetail_Row("▽ 대분류"),
-          Cell.NavDetail_Row("ㅤ▽ 중분류"),
-          Cell.NavDetail_Row("ㅤㅤ▶ 소분류")
+          // Cell.NavDetail_Row("▶ㅤ" + TextGen.NavDetail.title),
+          // Cell.NavDetail_Row("▽ 대분류"),
+          // Cell.NavDetail_Row("ㅤ▽ 중분류"),
+          // Cell.NavDetail_Row("ㅤㅤ▶ 소분류")
           // Cell.NavDetail_Row("▷ src"),
           // Cell.NavDetail_Row("ㅤ▷ docs"),
           // Cell.NavDetail_Row("ㅤ▽ main"),

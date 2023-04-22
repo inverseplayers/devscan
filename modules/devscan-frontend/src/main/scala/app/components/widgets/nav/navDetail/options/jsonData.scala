@@ -7,7 +7,7 @@ object JsonData:
 //   final case class JsonData(json: String, key: String)
   val jsonString =
     """{
-       "a": 1, "b": [2,3,4,5], "c": {"d": "A", "e": "B"}, "f": "Hello", "g": {"h": [6,7,8], "i": 9}
+       "frontend": 1, "backend": ["js","ts","rxjs"], "designer": {"d": "A", "e": "B"}, "marketer": "null", "g": {"h": [6,7,8], "i": 9}
     }"""
 
   def getJsonData(jsonString: String) =
