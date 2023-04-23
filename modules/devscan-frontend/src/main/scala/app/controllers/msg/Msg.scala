@@ -11,3 +11,6 @@ enum PageMsg extends Msg:
 
   // // 데이터 업데이트
   // case DataUpdate(sub: PubCase) extends PageMsg
+
+enum DepthMsg extends Msg:
+  case OnClick(depth: Int, key: String) extends DepthMsg

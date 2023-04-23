@@ -5,4 +5,5 @@ import cats.effect.IO
 object Update:
   def update(model: Model): Msg => (Model, Cmd[IO, Msg]) =
     // msg => update
-    case inputMsg: PageMsg => PageUpdate.update(model)(inputMsg)
+    case pageMsg: PageMsg   => PageUpdate.update(model)(pageMsg)
+    case depthMsg: DepthMsg => DepthUpdate.update(model)(depthMsg)

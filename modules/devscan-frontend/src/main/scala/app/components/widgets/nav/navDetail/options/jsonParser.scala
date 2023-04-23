@@ -46,17 +46,44 @@ object JsonParser:
     obj => s"Object[${obj.size}]"
   )
 
-  def template(key: String, json: Json, l: String): Html[PageMsg] =
+  def template(
+      key: String,
+      json: Json,
+      indent: String,
+      depth: Int,
+      model: Model
+  ): Html[DepthMsg | PageMsg] = {
+
+    // modle 에 foldable = [ d1: [c1,c2],d2:[c1,c2]...]
+    // foldable.d1 include c1
+    //
+
     div(`class` := "text-white")(
-      div(gen.cell(Cell.Json_Row(l + s"$key : ${getValue(json)}"))),
-      div()(
-        {
-          pipeGetEntries(json).map((k, v) => {
-            template(k, v, l + "ㅤ")
-          })
-        }
-      )
+      div(
+      )(
+        gen.cell(
+          Cell.Json_Row(
+            indent + s"$key : ${getValue(json)}",
+            "cell",
+            depth
+          )
+        )
+      ), {
+        model.depth.d1.contains("열어") match
+          case true =>
+            div()
+          case false =>
+            div()(
+              {
+                pipeGetEntries(json).map((k, v) => {
+                  template(k, v, indent + "ㅤ", depth + 1, model)
+                })
+              }
+            )
+
+      }
     )
+  }
 
   def view(model: Model): Html[Msg] =
-    template("구인", getJsonData(jsonString), "")
+    template("구인", getJsonData(jsonString), "", 0, model)
