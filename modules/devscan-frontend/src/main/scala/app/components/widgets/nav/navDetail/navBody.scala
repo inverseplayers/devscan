@@ -6,7 +6,10 @@ import tyrian.Html.*
 
 object NavBodyView:
   def render(model: Model): Html[Msg] =
-    FileSearchNavView.view(model)
+    // model.appStates()
+    ModelPipe.find_current_PageCase(model) match
+      case PageCase.Page_Finders(_) => FileSearchNavView.view(model)
+      case PageCase.Page_Searchs(_) => div()
 
   def view(model: Model): Html[Msg] =
     NavBodyView.render(model)
