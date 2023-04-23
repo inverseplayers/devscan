@@ -3,5 +3,11 @@ package app
 final case class Model(
     pointer: Int,
     appStates: List[StateCase],
-    depth: Depth = Depth()
+    depth: List[Map[String, Boolean]] = List(
+      Map("Json" -> true),
+      Map("Json" -> true),
+      Map("Json" -> true),
+      Map("Json" -> true),
+      Map("Json" -> true)
+    )
 )

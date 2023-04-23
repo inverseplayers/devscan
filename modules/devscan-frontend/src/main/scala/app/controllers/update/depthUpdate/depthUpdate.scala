@@ -14,7 +14,18 @@ object DepthUpdate:
         case _ =>
           (
             model.copy(
-              depth = model.depth.copy(d1 = List(key))
+              depth = {
+                val a = model.depth.zipWithIndex.map((d, i) => {
+                  depth == i match
+                    // 키가 없으면 키를 true로 넣고, 키가 있으면 키값을 not 연산하여서 집어넣는다
+                    case true =>
+                      d.contains(key) match
+                        case true  => d + (key -> !d(key))
+                        case false => d + (key -> true)
+                    case false => d
+                })
+                a
+              }
             ),
             Cmd.None
           )

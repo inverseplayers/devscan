@@ -59,20 +59,22 @@ object JsonParser:
     //
 
     div(`class` := "text-white")(
+      // div()(model.depth(0)("Json1")),
       div(
       )(
         gen.cell(
           Cell.Json_Row(
             indent + s"$key : ${getValue(json)}",
             "cell",
-            depth
+            depth,
+            key
           )
         )
       ), {
-        model.depth.d1.contains("열어") match
-          case true =>
-            div()
+        model.depth(depth).get(key).getOrElse(false) match
           case false =>
+            div()
+          case true =>
             div()(
               {
                 pipeGetEntries(json).map((k, v) => {

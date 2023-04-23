@@ -12,8 +12,12 @@ enum Cell:
   case Button(pagecase: PageCase, css: List[Tailwind], model: Model)
       extends Cell
   case NavDetail_Row(data: String = "", css: String = "cell") extends Cell
-  case Json_Row(data: String = "", css: String = "cell", depth: Int)
-      extends Cell
+  case Json_Row(
+      data: String = "",
+      css: String = "cell",
+      depth: Int,
+      key: String
+  ) extends Cell
   case None(data: String = "", css: String = "cell") extends Cell
 
 object gen:
@@ -46,9 +50,9 @@ object gen:
           )(
             data
           )
-        case Cell.Json_Row(data, css, depth) =>
+        case Cell.Json_Row(data, css, depth, key) =>
           div(
-            onClick(DepthMsg.OnClick(depth, "열어")),
+            onClick(DepthMsg.OnClick(depth, key)),
             `class` := s"${genCss(Tailwind(_Text, _Gray, _400))} pl-[2px] pt-[4px] text-[12px] font-[500]"
           )(
             data
