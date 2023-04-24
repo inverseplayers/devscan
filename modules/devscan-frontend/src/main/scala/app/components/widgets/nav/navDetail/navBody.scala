@@ -10,6 +10,7 @@ object NavBodyView:
     ModelPipe.find_current_PageCase(model) match
       case PageCase.Page_Finders(_) => FileSearchNavView.view(model)
       case PageCase.Page_Searchs(_) => div()
+      case PageCase.Page_Nopage(_)  => div()
 
   def view(model: Model): Html[Msg] =
     NavBodyView.render(model)

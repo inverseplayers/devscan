@@ -7,6 +7,7 @@ object PageCasePipe:
     pageCase match
       case PageCase.Page_Finders(name) => name
       case PageCase.Page_Searchs(name) => name
+      case PageCase.Page_Nopage(name)  => name
 
   // def in_url(pageCase: PageCase) =
   //   pageCase match

@@ -12,11 +12,8 @@ enum PageCase:
 
   case Page_Searchs(
       name: String = "search"
-      // url: String = "dashboard",
-      // pubs: List[PubCase] = List(
-      //   new PubCase.BlockPub,
-      //   new PubCase.TxPub,
-      //   new PubCase.BoardPub,
-      // ),
-      // status: Boolean = false,
+  ) extends PageCase
+
+  case Page_Nopage(
+      name: String = "nopage"
   ) extends PageCase

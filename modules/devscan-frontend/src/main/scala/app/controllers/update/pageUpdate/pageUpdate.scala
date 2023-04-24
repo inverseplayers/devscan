@@ -18,7 +18,9 @@ object PageUpdate:
               appStates = model.appStates ++ Seq(
                 StateCase(
                   number = get_latest_number(model) + 1,
-                  pageCase = page
+                  pageCase = page == find_current_PageCase(model) match
+                    case true => PageCase.Page_Nopage()
+                    case _    => page
                 )
               )
             ),
