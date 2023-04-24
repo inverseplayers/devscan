@@ -7,6 +7,7 @@ import CssCase.*
 import CssCase.Target.*
 import CssCase.Color.*
 import CssCase.Point.*
+import CssCase.Action.*
 
 enum Cell:
   case Button(pagecase: PageCase, css: List[Tailwind], model: Model)
@@ -53,7 +54,10 @@ object gen:
         case Cell.Json_Row(data, css, depth, key) =>
           div(
             onClick(DepthMsg.OnClick(depth, key)),
-            `class` := s"${genCss(Tailwind(_Text, _Gray, _400))} pl-[2px] pt-[4px] text-[12px] font-[500]"
+            `class` := genCss(
+              Tailwind(_Text, _Gray, _400),
+              Tailwind(_Bg, _Gray, _700, _Hover)
+            ) + s"pl-[2px] pt-[4px] text-[12px] font-[500]"
           )(
             data
           )
