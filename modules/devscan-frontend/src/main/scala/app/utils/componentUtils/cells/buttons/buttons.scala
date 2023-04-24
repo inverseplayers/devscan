@@ -56,7 +56,8 @@ object gen:
             onClick(DepthMsg.OnClick(depth, key)),
             `class` := genCss(
               Tailwind(_Text, _Gray, _400),
-              Tailwind(_Bg, _Gray, _700, _Hover)
+              Tailwind(_Bg, _Gray, _700, _Hover),
+              Tailwind(_Bg, _Orange, _300, _Active)
             ) + s"pl-[2px] pt-[4px] text-[12px] font-[500]"
           )(
             data
