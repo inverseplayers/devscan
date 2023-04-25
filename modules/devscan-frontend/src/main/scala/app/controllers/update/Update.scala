@@ -7,3 +7,4 @@ object Update:
     // msg => update
     case pageMsg: PageMsg   => PageUpdate.update(model)(pageMsg)
     case depthMsg: DepthMsg => DepthUpdate.update(model)(depthMsg)
+    case e: OnEffectMsg     => OnEffectUpdate.update(model)(e)

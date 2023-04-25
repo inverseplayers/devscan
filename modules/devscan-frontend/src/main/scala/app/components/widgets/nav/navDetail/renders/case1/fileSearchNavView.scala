@@ -17,7 +17,7 @@ object FileSearchNavView:
   val arrow3 = "⟳ ⟲"
 
   def view(model: Model): Html[Msg] =
-    div(`class` := s"$nav_detail overflow-auto ")(
+    div(`class` := s"$nav_detail overflow-auto ${model.isOver}")(
       div(
         gen.cell(
           // Cell.NavDetail_Row("▶ㅤ" + TextGen.NavDetail.title),

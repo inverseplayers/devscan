@@ -54,6 +54,8 @@ object gen:
         case Cell.Json_Row(data, css, depth, key) =>
           div(
             onClick(DepthMsg.OnClick(depth, key)),
+            onMouseOver(OnEffectMsg.OnMouseOver(true)),
+            onMouseOut(OnEffectMsg.OnMouseOut(false)),
             `class` := genCss(
               Tailwind(_Text, _Gray, _400),
               Tailwind(_Bg, _Gray, _700, _Hover),

@@ -52,7 +52,7 @@ object JsonParser:
       indent: String,
       depth: Int,
       model: Model
-  ): Html[DepthMsg | PageMsg] = {
+  ): Html[Msg] = {
 
     // modle 에 foldable = [ d1: [c1,c2],d2:[c1,c2]...]
     // foldable.d1 include c1

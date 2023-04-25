@@ -31,13 +31,18 @@ textarea {
     z-index: 10;
 }
 
+
+
 .overflow-auto::-webkit-scrollbar {
-    width: 0.8vw;
+    width: 1vw;
 }
 .overflow-auto::-webkit-scrollbar-thumb{
     background-color: rgb(59, 60, 68,0);
 }
 .overflow-auto::-webkit-scrollbar-thumb:hover{
+    background-color: rgb(59, 60, 68,1);
+}
+.overflow-auto.true::-webkit-scrollbar-thumb{
     background-color: rgb(59, 60, 68,1);
 }
 

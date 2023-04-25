@@ -14,3 +14,7 @@ enum PageMsg extends Msg:
 
 enum DepthMsg extends Msg:
   case OnClick(depth: Int, key: String) extends DepthMsg
+
+enum OnEffectMsg extends Msg:
+  case OnMouseOver(isOver: Boolean) extends OnEffectMsg
+  case OnMouseOut(isOver: Boolean) extends OnEffectMsg

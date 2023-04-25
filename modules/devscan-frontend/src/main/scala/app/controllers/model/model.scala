@@ -9,5 +9,6 @@ final case class Model(
       Map("Json" -> true),
       Map("Json" -> true),
       Map("Json" -> true)
-    )
+    ),
+    isOver: Boolean = false
 )
