@@ -20,32 +20,3 @@ textarea {
     box-shadow: none;
     resize: none; /*remove the resize handle on the bottom right*/
 }
-
-.overflow-auto {
-    /* 결국 이렇게 해도 hover 효과 생기지가 않는다.. hover 을 event 로 받아서 처리해야할듯 */
-    width: 100%;
-    /* background-color: rgb(100, 97, 97,0.01) !important; */
-    /* scrollbar-width: normal; */
-    /* scrollbar-color: blue; */
-    /* background: red !important; */
-    z-index: 10;
-}
-
-
-
-.overflow-auto::-webkit-scrollbar {
-    width: 1vw;
-}
-.overflow-auto::-webkit-scrollbar-thumb{
-    background-color: rgb(59, 60, 68,0);
-}
-.overflow-auto::-webkit-scrollbar-thumb:hover{
-    background-color: rgb(59, 60, 68,1);
-}
-.overflow-auto.true::-webkit-scrollbar-thumb{
-    background-color: rgb(59, 60, 68,1);
-}
-
-.overflow-auto::-webkit-scrollbar-track{
-    background-color: rgb(30 ,30, 30);
-}
