@@ -2,8 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 * {
     margin: 0
+}
+
+body {
+    overscroll-behavior: none;
 }
 
 input {

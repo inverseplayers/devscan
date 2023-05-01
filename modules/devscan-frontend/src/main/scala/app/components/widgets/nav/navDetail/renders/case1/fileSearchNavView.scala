@@ -18,16 +18,8 @@ object FileSearchNavView:
 
   def view(model: Model): Html[Msg] =
     div(
-      `class` := s"scroll-bar-wrap  $nav_detail ${model.isOver}"
+      `class` := s"scroll-bar-relative $nav_detail ${model.isOver}"
     )(
-      div(
-        gen.cell(
-          // Cell.NavDetail_Row("▶ㅤ" + TextGen.NavDetail.title),
-          // Cell.NavDetail_Row("▽ 대분류"),
-          // Cell.NavDetail_Row("ㅤ▽ 중분류"),
-          // Cell.NavDetail_Row("ㅤㅤ▶ 소분류")
-        )
-      ),
-      div(`class` := s"scroll-bar-box")(JsonParser.view(model)),
-      div(`class` := s"scroll-bar-cover")()
+      div(`class` := s"")(JsonParser.view(model)),
+      ScrollView.view(model)
     )

@@ -54,10 +54,6 @@ object JsonParser:
       model: Model
   ): Html[Msg] = {
 
-    // modle 에 foldable = [ d1: [c1,c2],d2:[c1,c2]...]
-    // foldable.d1 include c1
-    //
-
     div(`class` := "text-white")(
       // div()(model.depth(0)("Json1")),
       div(
