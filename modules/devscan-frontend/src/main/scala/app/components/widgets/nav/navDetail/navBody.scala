@@ -15,4 +15,4 @@ object NavBodyView:
       case PageCase.Page_Nopage(_)  => div()
 
   def view(model: Model): Html[Msg] =
-    NavBodyView.render(model)
+    div(`class` := "navBody")(NavBodyView.render(model))

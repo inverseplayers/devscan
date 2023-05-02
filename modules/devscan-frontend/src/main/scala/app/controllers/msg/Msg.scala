@@ -1,6 +1,7 @@
 package app
 
 import io.circe.Json
+import org.scalajs.dom.Element
 
 sealed trait Msg
 
@@ -18,3 +19,5 @@ enum DepthMsg extends Msg:
 enum OnEffectMsg extends Msg:
   case OnMouseOver(isOver: Boolean) extends OnEffectMsg
   case OnMouseOut(isOver: Boolean) extends OnEffectMsg
+  case On_MiniMap_Click(e: Element) extends OnEffectMsg
+  case On_MiniMap_ClickAfterUpdate(e: Element) extends OnEffectMsg

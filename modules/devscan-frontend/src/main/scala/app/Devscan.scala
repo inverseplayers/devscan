@@ -19,7 +19,7 @@ object Devscan extends TyrianApp[Msg, Model]:
     View.view(model)
 
   def subscriptions(model: Model): Sub[IO, Msg] =
-    Sub.None
+    Subscriptions.subscriptions(model)
 
 // type Model = Int
 

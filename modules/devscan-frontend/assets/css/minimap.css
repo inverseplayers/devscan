@@ -1,0 +1,39 @@
+.minimap-relative{
+    position: relative;
+    overflow: auto;
+}
+
+.minimap-absolute{
+    position: absolute;
+    top:0px;
+    right: 0px;
+}
+.minimap-fixed{
+    position: fixed;
+    width: 15px;
+    height: 100%;
+    background: rgba(20, 20, 20,0.95);
+    background: rgba(152, 111, 111, 0.9);
+
+}
+.minimap-window{
+    position: fixed;
+    width: 15px;
+    height: 100%;
+    background: rgba(20, 20, 20,0.95);
+    background: rgba(152, 111, 111, 0.9);
+    background-color: blue;
+
+}
+
+.minimap-window{
+    width: 15px;
+    height: 100px;
+    /* position: fixed; */
+    /* top: 0; */
+    /* left: 0; */
+    transform-origin: 0 0;
+    z-index: 9;
+    border: 3px solid #1b3ece9a;
+    background-color: blue;
+    }

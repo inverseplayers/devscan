@@ -18,8 +18,8 @@ object FileSearchNavView:
 
   def view(model: Model): Html[Msg] =
     div(
-      `class` := s"scroll-bar-relative $nav_detail ${model.isOver}"
+      `class` := s"minimap-relative $nav_detail ${model.isOver}"
     )(
-      div(`class` := s"")(JsonParser.view(model)),
-      ScrollView.view(model)
+      div(`class` := s"json-area")(JsonParser.view(model)),
+      Minimap.view(model)
     )
