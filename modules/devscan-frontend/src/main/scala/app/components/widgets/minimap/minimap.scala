@@ -10,7 +10,7 @@ object Minimap:
     model.isMinimap match
       case true =>
         div(`class` := s"minimap-absolute")(
-          div(`class` := s"minimap-fixed")(),
+          div(`class` := s"minimap-doc")(),
           div(
             `class` := s"minimap-window",
             style(Style("background" -> "blue"))

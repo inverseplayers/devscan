@@ -41,6 +41,10 @@ object OnEffectUpdate:
           OnEffectMsg.On_MiniMap_ClickAfterUpdate(element),
           10.millis
         )
+        // Cmd.Emit(
+        //   OnEffectMsg.On_MiniMap_ClickAfterUpdate(element)
+        //   // 1.millis
+        // )
       )
     case OnEffectMsg.On_MiniMap_ClickAfterUpdate(element) =>
       (

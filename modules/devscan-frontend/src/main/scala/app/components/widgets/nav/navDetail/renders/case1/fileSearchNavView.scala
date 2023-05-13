@@ -18,8 +18,8 @@ object FileSearchNavView:
 
   def view(model: Model): Html[Msg] =
     div(
-      `class` := s"minimap-relative $nav_detail ${model.isOver}"
+      `class` := s"nav_detail $nav_detail ${model.isOver}"
     )(
-      div(`class` := s"json-area")(JsonParser.view(model)),
-      Minimap.view(model)
+      div(`class` := s"json-area")(JsonParser.view(model))
+      // Minimap.view(model)
     )
