@@ -55,7 +55,8 @@ object JsonParser:
       json: Json,
       indent: String,
       depth: Int,
-      model: Model
+      model: Model,
+      current_jsonkey: List[String | Int]
   ): Html[Msg] = {
     val kv = s"$key : ${getValue(json)}"
     div(
@@ -70,7 +71,9 @@ object JsonParser:
             "cell",
             depth,
             key,
-            model.current_depth
+            model.current_depth,
+            current_jsonkey ::: List(key),
+            model
           )
         )
       ), {
@@ -81,7 +84,17 @@ object JsonParser:
             div()(
               {
                 pipeGetEntries(json).map((k, v) => {
-                  template(k, v, indent + "ㅤ", depth + 1, model)
+                  template(
+                    k,
+                    v,
+                    indent + "ㅤ",
+                    depth + 1,
+                    model, {
+                      // println("current_jsonkey ::: List(k)")
+                      // println(current_jsonkey ::: List(key))
+                      current_jsonkey ::: List(key)
+                    }
+                  )
                 })
               }
             )
@@ -91,4 +104,4 @@ object JsonParser:
   }
 
   def view(model: Model): Html[Msg] =
-    template("구인", getJsonData(jsonString), "", 0, model)
+    template("구인", model.json, "", 0, model, List())

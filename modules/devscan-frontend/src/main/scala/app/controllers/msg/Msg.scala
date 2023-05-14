@@ -14,7 +14,8 @@ enum PageMsg extends Msg:
   // case DataUpdate(sub: PubCase) extends PageMsg
 
 enum DepthMsg extends Msg:
-  case OnClick(depth: Int, key: String) extends DepthMsg
+  case OnClick(depth: Int, key: String, current_jsonkey: List[String | Int])
+      extends DepthMsg
 
 enum OnEffectMsg extends Msg:
   case OnMouseOver(isOver: Boolean) extends OnEffectMsg

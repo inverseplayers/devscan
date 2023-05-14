@@ -18,7 +18,9 @@ enum Cell:
       css: String = "cell",
       depth: Int,
       key: String,
-      current_depth: String
+      current_depth: String,
+      current_jsonkey: List[String | Int],
+      model: Model
   ) extends Cell
   case None(data: String = "", css: String = "cell") extends Cell
 
@@ -52,9 +54,17 @@ object gen:
           )(
             data
           )
-        case Cell.Json_Row(data, css, depth, key, current_depth) =>
+        case Cell.Json_Row(
+              data,
+              css,
+              depth,
+              key,
+              current_depth,
+              current_jsonkey,
+              model
+            ) =>
           div(
-            onClick(DepthMsg.OnClick(depth, key)),
+            onClick(DepthMsg.OnClick(depth, key, current_jsonkey)),
             onMouseOver(OnEffectMsg.OnMouseOver(true)),
             onMouseOut(OnEffectMsg.OnMouseOut(false)),
             `class` := genCss(
@@ -64,11 +74,11 @@ object gen:
                   case true => Tailwind(_Text, _Gray, _50)
                   case _    => Tailwind(_Text, _Gray, _400)
               }, {
-                current_depth == s"$depth:$key" match
+                current_jsonkey.sameElements(model.current_jsonkey) match
                   case true => Tailwind(_Text, _Gray, _100)
                   case _    => Tailwind(_Text, _Gray, _400)
               }, {
-                current_depth == s"$depth:$key" match
+                current_jsonkey.sameElements(model.current_jsonkey) match
                   case true => Tailwind(_Bg, _Gray, _700)
                   case _    => Tailwind(_Text, _Gray, _400)
               }

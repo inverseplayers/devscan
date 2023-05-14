@@ -9,6 +9,12 @@ object PageView:
 
   def view(model: Model): Html[Msg] =
     div(`class` := s"$page")(
-      p(`class` := "text-white")(model.current_depth)
-      // p(`class` := "text-white")(resume)
+      div(
+        div(p(`class` := "text-white")(model.current_jsonkey.toString())),
+        div(
+          p(`class` := "text-white")(
+            model.current_jsonValue
+          )
+        )
+      )
     )
