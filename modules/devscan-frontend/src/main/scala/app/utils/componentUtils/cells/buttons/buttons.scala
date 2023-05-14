@@ -74,7 +74,9 @@ object gen:
               }
             ) + s"pl-[2px] pt-[4px] text-[12px] font-[500] hover:cursor-pointer	"
           )(
-            data
+            data.length > 30 match
+              case true => data.take(30) + "..."
+              case _    => data
           )
         case _ => div()
     )
