@@ -7,7 +7,7 @@ object JsonData:
 //   final case class JsonData(json: String, key: String)
   val jsonString =
     """{
-       "frontend1": 1,"frontend1": 1, "backend1": ["js","ts","rxjs","js","ts","rxjs","js","ts","rxjs","js","ts","rxjs","js","ts","rxjs","js","ts","rxjs","js","ts","rxjs","js","ts","rxjs","js","ts","rxjs","js","ts","rxjs","js","ts","rxjs","js","ts","rxjs","js","ts","rxjs","js","ts","rxjs","js","ts","rxjs","js","ts","rxjs"], "fronatend": 19,"designer": {"d": "A", "e": "B"}, "marketer": "null", "g": {"h": [6,7,8], "i": 9,"frontend": 1},
+       "frontend1": 1,"frontend1": 1, "backend1": [{"js": {"backend2": ["js","ts","rxjs"]}, "hi": ["hi1","hi2"]},"ts","rxjs","js","ts","rxjs","js","ts","rxjs","js","ts","rxjs","js","ts","rxjs","js","ts","rxjs","js","ts","rxjs","js","ts","rxjs","js","ts","rxjs","js","ts","rxjs","js","ts","rxjs","js","ts","rxjs","js","ts","rxjs","js","ts","rxjs","js","ts","rxjs","js","ts","rxjs"], "fronatend": 19,"designer": {"d": "A", "e": "B"}, "marketer": "null", "g": {"h": [6,7,8], "i": 9,"frontend": 1},
        "frontend2": 1,"frontend2": 1, "backend2": ["js","ts","rxjs"], "fronsdtend": 19,"designer": {"d": "A", "e": "B"}, "marketer": "null", "g": {"h": [6,7,8], "i": 9,"frontend": 1},
        "frontend3": 1,"frontend3": 1, "backend3": ["js","ts","rxjs"], "frontednd": 19,"designer": {"d": "A", "e": "B"}, "marketer": "null", "g": {"h": [6,7,8], "i": 9,"frontend": 1},
        "frontend13": 1,"fronten4d": 1, "backend3": ["js","ts","rxjs"], "frontasdend": 19,"designer": {"d": "A", "e": "B"}, "marketer": "null", "g": {"h": [6,7,8], "i": 9,"frontend": 1},

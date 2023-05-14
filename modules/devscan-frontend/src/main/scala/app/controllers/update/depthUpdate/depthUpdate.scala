@@ -11,13 +11,19 @@ import app.ModelPipe.*
 object DepthUpdate:
   def update(model: Model): DepthMsg => (Model, Cmd[IO, Msg]) =
     case DepthMsg.OnClick(depth: Int, key: String) =>
-      println(Dom.select("json-area").clientHeight)
-      println(document.body.clientHeight)
+      // println(Dom.select("json-area").clientHeight)
+      // println(document.body.clientHeight)
+      println("model.depth")
+      println(model.depth)
+      println(s"depth : key")
+      println(s"$depth : $key")
+      println(model.current_depth)
 
       depth match
         case _ =>
           (
             model.copy(
+              current_depth = s"$depth:$key",
               depth = {
                 val a = model.depth.zipWithIndex.map((d, i) => {
                   depth == i match

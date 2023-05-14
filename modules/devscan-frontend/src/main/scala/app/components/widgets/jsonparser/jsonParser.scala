@@ -7,6 +7,10 @@ import scala.util.chaining.*
 import scala.scalajs.js.Dynamic.{global => g}
 import io.circe.{Json, JsonObject}
 import app.JsonData.*
+import app.CssCase.Target.*
+import app.CssCase.Color.*
+import app.CssCase.Point.*
+import app.CssCase.*
 
 object JsonParser:
 
@@ -53,17 +57,20 @@ object JsonParser:
       depth: Int,
       model: Model
   ): Html[Msg] = {
-
-    div(`class` := "text-white")(
-      // div()(model.depth(0)("Json1")),
+    val kv = s"$key : ${getValue(json)}"
+    div(
+      `class` := s"text-white"
+      // onClick()
+    )(
       div(
       )(
         gen.cell(
           Cell.Json_Row(
-            indent + s"$key : ${getValue(json)}",
+            indent + kv,
             "cell",
             depth,
-            key
+            key,
+            model.current_depth
           )
         )
       ), {

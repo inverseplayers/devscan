@@ -17,7 +17,8 @@ enum Cell:
       data: String = "",
       css: String = "cell",
       depth: Int,
-      key: String
+      key: String,
+      current_depth: String
   ) extends Cell
   case None(data: String = "", css: String = "cell") extends Cell
 
@@ -51,16 +52,27 @@ object gen:
           )(
             data
           )
-        case Cell.Json_Row(data, css, depth, key) =>
+        case Cell.Json_Row(data, css, depth, key, current_depth) =>
           div(
             onClick(DepthMsg.OnClick(depth, key)),
             onMouseOver(OnEffectMsg.OnMouseOver(true)),
             onMouseOut(OnEffectMsg.OnMouseOut(false)),
             `class` := genCss(
               Tailwind(_Text, _Gray, _400),
-              Tailwind(_Bg, _Gray, _700, _Hover),
-              Tailwind(_Bg, _Orange, _300, _Active)
-            ) + s"pl-[2px] pt-[4px] text-[12px] font-[500]"
+              Tailwind(_Bg, _Gray, _800, _Hover), {
+                depth == 0 match
+                  case true => Tailwind(_Text, _Gray, _50)
+                  case _    => Tailwind(_Text, _Gray, _400)
+              }, {
+                current_depth == s"$depth:$key" match
+                  case true => Tailwind(_Text, _Gray, _100)
+                  case _    => Tailwind(_Text, _Gray, _400)
+              }, {
+                current_depth == s"$depth:$key" match
+                  case true => Tailwind(_Bg, _Gray, _700)
+                  case _    => Tailwind(_Text, _Gray, _400)
+              }
+            ) + s"pl-[2px] pt-[4px] text-[12px] font-[500] hover:cursor-pointer	"
           )(
             data
           )
