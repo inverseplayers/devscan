@@ -2,7 +2,7 @@ package app
 
 import io.circe.Json
 import app.JsonData.jsonString
-import app.JsonData.getJsonData
+import app.JsonData.*
 
 final case class Model(
     pointer: Int,
@@ -19,7 +19,7 @@ final case class Model(
       Map("Depth_9" -> true),
       Map("Depth_10" -> true)
     ),
-    json: Json = getJsonData(jsonString),
+    json: Json = getJsonData(rjson),
     current_depth: String = "0:",
     current_jsonkey: List[String | Int] = List(),
     current_jsonValue: String = "",
