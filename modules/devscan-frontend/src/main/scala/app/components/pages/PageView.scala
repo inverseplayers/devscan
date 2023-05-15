@@ -13,7 +13,15 @@ object PageView:
         div(p(`class` := "text-white")(model.current_jsonkey.toString())),
         div(
           p(`class` := "text-white")(
-            model.current_jsonValue
+            {
+              model.current_jsonValue
+                .replaceAll(raw"""\\\"""", raw"")
+                .split(raw"\\n")
+                .toList
+                .map(d => {
+                  div(d)
+                })
+            }
           )
         )
       )

@@ -19,7 +19,7 @@ final case class Model(
       Map("Depth_9" -> true),
       Map("Depth_10" -> true)
     ),
-    json: Json = getJsonData(rjson),
+    json: Json = getJsonData(jsonString),
     current_depth: String = "0:",
     current_jsonkey: List[String | Int] = List(),
     current_jsonValue: String = "",

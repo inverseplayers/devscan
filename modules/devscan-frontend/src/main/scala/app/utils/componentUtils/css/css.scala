@@ -7,7 +7,7 @@ object Css:
   import _css.*
 
   val main = "h-screen w-screen flex"
-  val page = "h-screen w-screen flex bg-[rgba(15,15,15,0.95)]"
+  val page = "h-screen w-screen flex bg-[rgba(15,15,15,0.95)] overflow-auto	"
   val nav_container = "h-screen flex  bg-[rgba(20,20,20,0.95)]"
   val nav_detail = s"h-screen w-[300px] bg-[rgba(20,20,20,0.15)] "
   // + s"$test_bg"
