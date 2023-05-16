@@ -13,6 +13,7 @@ import scala.concurrent.Future
 // import scala.scalajs.js.Promise
 import scala.scalajs.js.Thenable.Implicits._
 import scala.concurrent.Promise
+import app.JsonData.getJsonData
 
 object OnEffectUpdate:
 
@@ -51,5 +52,24 @@ object OnEffectUpdate:
         model.copy(isMinimap =
           Dom.select("json-area").clientHeight > window.innerHeight
         ),
+        Cmd.None
+      )
+    case OnEffectMsg.On_KeyUp_Json(string) =>
+      println(model.json)
+      val a = model.json.hcursor
+      (
+        model.copy(
+          // json = getJsonData("""{"jsonString": "none"}""")
+          json = model.json.hcursor
+            .downField("backend777")
+            .withFocus(_.mapArray(_.drop(200)))
+            .top
+            .get
+        ),
+        Cmd.None
+      )
+    case OnEffectMsg.None =>
+      (
+        model,
         Cmd.None
       )

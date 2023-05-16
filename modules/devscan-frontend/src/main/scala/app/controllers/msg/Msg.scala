@@ -22,3 +22,5 @@ enum OnEffectMsg extends Msg:
   case OnMouseOut(isOver: Boolean) extends OnEffectMsg
   case On_MiniMap_Click(e: Element) extends OnEffectMsg
   case On_MiniMap_ClickAfterUpdate(e: Element) extends OnEffectMsg
+  case On_KeyUp_Json(e: String) extends OnEffectMsg
+  case None extends OnEffectMsg
