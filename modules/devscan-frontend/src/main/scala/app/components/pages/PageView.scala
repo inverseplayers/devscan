@@ -16,16 +16,6 @@ object PageView:
         div(
           `class` := "dom-input text-white block   ",
           contentEditable := "true"
-          // onKeyDown(e =>
-          //   println(e)
-          //   // (e.ctrlKey || e.metaKey) && e.key == "s" match
-          //   // e == "s" match
-          //   //   // e.key == "s" match
-          //   //   // e.key == "s" match
-          //   //   case true => OnEffectMsg.On_KeyUp_Json("")
-          //   //   case _    => OnEffectMsg.None
-          //   OnEffectMsg.None
-          // )
         )(
           {
             model.current_jsonValue
@@ -34,7 +24,7 @@ object PageView:
               .split(raw"\\n")
               .toList
               .map(d => {
-                div(contentEditable := "true", `class` := "pl-1")(d)
+                div(`class` := "pl-1")(d)
               })
           }
         )

@@ -62,7 +62,9 @@ object OnEffectUpdate:
           // json = getJsonData("""{"jsonString": "none"}""")
           json = model.json.hcursor
             .downField("backend777")
-            .withFocus(_.mapArray(_.drop(200)))
+            .downArray
+            .downField("이력서1")
+            .withFocus(_.mapString(s => "안녕?"))
             .top
             .get
         ),
