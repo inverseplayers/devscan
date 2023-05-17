@@ -15,10 +15,16 @@ object Subscriptions:
             "keydown",
             element
           ) { e =>
+            println("element")
+            println(element.outerHTML.replaceAll("<[^>]*>", ""))
             (e.ctrlKey || e.metaKey) && e.key == "s" match
               case true =>
                 e.preventDefault();
-                Some(OnEffectMsg.On_KeyUp_Json(""))
+                Some(
+                  OnEffectMsg.On_KeyUp_Json(
+                    element.outerHTML.replaceAll("<[^>]*>", "")
+                  )
+                )
               case _ => Some(OnEffectMsg.None)
           }
     )

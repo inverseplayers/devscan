@@ -64,7 +64,7 @@ object OnEffectUpdate:
             .downField("backend777")
             .downArray
             .downField("이력서1")
-            .withFocus(_.mapString(s => "안녕?"))
+            .withFocus(_.mapString(s => string))
             .top
             .get
         ),

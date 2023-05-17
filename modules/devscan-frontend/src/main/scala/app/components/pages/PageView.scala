@@ -14,7 +14,7 @@ object PageView:
       )(
         div(p(`class` := "text-white")(model.current_jsonkey.toString())),
         div(
-          `class` := "dom-input text-white block   ",
+          `class` := s"dom-input text-white block   ${model.current_jsonkey}",
           contentEditable := "true"
         )(
           {
