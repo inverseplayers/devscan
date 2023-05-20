@@ -22,6 +22,13 @@ val Dependencies = new {
       // "com.github.mcallisto" %%% "scalajs-jsoup" % "1.14.3"
     )
   )
+  lazy val parsetoCommon = Seq(
+    libraryDependencies ++= Seq(
+      "io.circe" %%% "circe-core" % V.circe,
+      "io.circe" %%% "circe-generic" % V.circe,
+      "io.circe" %%% "circe-parser" % V.circe
+    )
+  )
 }
 
 lazy val root = (project in file("."))
@@ -84,7 +91,7 @@ lazy val parsetoFrontEnd = (project in file("modules/parseto-frontend"))
 
 lazy val parsetoCommon = (project in file("modules/parseto-common"))
   .enablePlugins(ScalaJSPlugin)
-  // .settings(Dependencies.devscanFrontend)
+  .settings(Dependencies.parsetoCommon)
   .settings(
     name := "parseto-common",
     version := "0.0.1",
