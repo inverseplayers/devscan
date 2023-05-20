@@ -5,6 +5,6 @@ import tyrian.Html.*
 
 object View:
   def view(model: Model): Html[Msg] =
-    div(`class` := s"${}")(
-      div("안녕")
+    div(`class` := s"${"bg-black h-screen w-screen"}")(
+      div(`class` := s"${"text-white"}")("안녕")
     )
