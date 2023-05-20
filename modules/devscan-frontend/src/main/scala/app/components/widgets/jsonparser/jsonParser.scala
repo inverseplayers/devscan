@@ -56,7 +56,7 @@ object JsonParser:
       indent: String,
       depth: Int,
       model: Model,
-      current_jsonkey: List[String | Int]
+      current_jsonkey: List[String]
   ): Html[Msg] = {
     val kv = s"$key : ${getValue(json)}"
     div(

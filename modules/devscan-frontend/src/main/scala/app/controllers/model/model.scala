@@ -25,7 +25,7 @@ final case class Model(
     ),
     json: Json = string2json(ex_fruits),
     current_depth: String = "0:",
-    current_jsonkey: List[String | Int] = List("s"),
+    current_jsonkey: List[String] = List("s"),
     current_jsonValue: String = "",
     isOver: Boolean = false,
     isMinimap: Boolean = false,

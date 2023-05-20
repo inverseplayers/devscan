@@ -24,25 +24,8 @@ object PageView:
           {
             log2("model.json")(model.json)
             log2("model.current_jsonkey")(model.current_jsonkey)
-            val b =
-              ex_fruits
-                .pipe(string2json)
-                .pipe(s =>
-                  json2string(model.json, model.current_jsonkey.drop(1))
-                )
+            json2string(model.json, model.current_jsonkey.drop(1))
 
-            // val b = model.map_dom(List("s").toString())
-            b
-            // b.toString()
-            // val x = model.current_jsonValue
-            //   .replaceAll(raw"""\\\"""", raw"")
-            //   .replaceAll(raw"""\"""", raw"")
-            //   .split(raw"\\n")
-            //   .toList
-            //   .map(d => {
-            //     div(`class` := "pl-1")(d)
-            //   })
-            // x
           }
         )
       )

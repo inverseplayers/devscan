@@ -8,8 +8,14 @@ import io.circe.Encoder.encodeString
 import parseto.common.data.JsonString.ex_fruits
 import parseto.common.function.Log.log
 import io.circe.ACursor
+import io.circe.HCursor
 
 object Parser:
+  def string_digit_2int(string: String): String | Int =
+    string.forall(Character.isDigit) match
+      case true  => string.toInt
+      case false => string
+
   def string2json(jsonString: String) =
     decode[Json](jsonString) match {
       case Left(error) => {
@@ -36,26 +42,26 @@ object Parser:
           z.right
         }
 
+  def hcursor2cursor_byKey(hcursor: HCursor | ACursor, key: String | Int) =
+    key match
+      case key: String =>
+        Some(
+          hcursor.downField(key)
+        )
+      case key: Int =>
+        Some(
+          hcursor.downArray.pipe(cursor2cursor_selector(key.toInt))
+        )
+
   def cursor2cursor =
-    (cursor: Option[ACursor], json: Json, key: String | Int) =>
+    (cursor: Option[ACursor], json: Json, key: String) =>
+      val _key = string_digit_2int(key)
       cursor match
         case None =>
-          key match
-            case key: String =>
-              Some(json.hcursor.downField(key))
-            case key: Int =>
-              Some(
-                json.hcursor.downArray.pipe(cursor2cursor_selector(key))
-              )
+          hcursor2cursor_byKey(json.hcursor, _key)
 
         case _ =>
-          key match
-            case key: String =>
-              Some(cursor.get.downField(key))
-            case key: Int =>
-              Some(
-                cursor.get.downArray.pipe(cursor2cursor_selector(key))
-              )
+          hcursor2cursor_byKey(cursor.get, _key)
 
   def cursor2json =
     (cursor: Option[ACursor], value: String) =>
@@ -68,7 +74,7 @@ object Parser:
 
   // 이렇게 까지 해야하나
   def json2json_update(
-      keys: List[String | Int],
+      keys: List[String],
       value: String,
       acc: Option[ACursor] = None
   )(

@@ -21,7 +21,7 @@ object DepthUpdate:
     case DepthMsg.OnClick(
           depth: Int,
           key: String,
-          current_jsonkey: List[String | Int]
+          current_jsonkey: List[String]
         ) =>
       depth match
         case _ =>

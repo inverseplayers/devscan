@@ -22,3 +22,12 @@
 //   )
 //   .top
 //   .get
+
+//    model.current_jsonValue
+//           .replaceAll(raw"""\\\"""", raw"")
+//           .replaceAll(raw"""\"""", raw"")
+//           .split(raw"\\n")
+//           .toList
+//           .map(d => {
+//             div(`class` := "pl-1")(d)
+//           })

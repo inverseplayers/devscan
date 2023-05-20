@@ -16,6 +16,7 @@ import tyrian.*
 
 // import org.jsoup.nodes.{Document, Element}
 import scala.util.chaining.*
+import parseto.common.function.Log.*
 
 object Subscriptions:
   def subscriptions(model: Model): Sub[IO, Msg] =
@@ -30,7 +31,9 @@ object Subscriptions:
           ) { e =>
             // val pattern = """(?<=<div.*?>).*?(?=<\/div>)""".r
 
-            val _element = element.innerHTML
+            val _element2 = log2("element.innerHTML")(element.innerHTML)
+            val _element = log2("element.innerText")(element.innerText)
+            // element.oncopy.getClass("text/plain")
             //   pattern
             //     .findAllIn(element.outerHTML)
             //     .toList
@@ -55,7 +58,7 @@ object Subscriptions:
                 e.preventDefault();
                 Some(
                   OnEffectMsg.On_KeyUp_Json(
-                    _element
+                    log2("element.innerHTML")(_element)
                   )
                 )
               case _ => Some(OnEffectMsg.None)

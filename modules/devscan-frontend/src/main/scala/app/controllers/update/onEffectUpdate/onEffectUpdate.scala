@@ -14,6 +14,9 @@ import scala.concurrent.Future
 import scala.scalajs.js.Thenable.Implicits._
 import scala.concurrent.Promise
 import app.JsonData.getJsonData
+import parseto.common.parser.Parser.json2json_update
+import parseto.common.parser.Parser.string2json
+import parseto.common.function.Log.*
 // import app.Model.map_dom
 
 object OnEffectUpdate:
@@ -43,10 +46,6 @@ object OnEffectUpdate:
           OnEffectMsg.On_MiniMap_ClickAfterUpdate(element),
           10.millis
         )
-        // Cmd.Emit(
-        //   OnEffectMsg.On_MiniMap_ClickAfterUpdate(element)
-        //   // 1.millis
-        // )
       )
     case OnEffectMsg.On_MiniMap_ClickAfterUpdate(element) =>
       (
@@ -56,36 +55,12 @@ object OnEffectUpdate:
         Cmd.None
       )
     case OnEffectMsg.On_KeyUp_Json(string) =>
-      println("string")
-      println(string)
-      // println(model.json)
-      val a = model.json.hcursor
       (
         model.copy(
-          // 1.map dom 에서 데이터 뽑기
-          map_dom = model.map_dom +
-            (
-              model.current_jsonkey.toString()
-              // List("s").toString()
-                -> string
-                  .replaceAll(raw"""\\\"""", raw"")
-                  .replaceAll(raw"""\"""", raw"")
-                  .split(raw"\\n")
-                  .toList
-                  .map(d => {
-                    div(`class` := "pl-1")(d)
-                  })
-            ),
-
-          // json = getJsonData("""{"jsonString": "none"}""")
-          // 2. json 에서 데이터 뽑기
-          json = model.json.hcursor
-            .downField("backend777")
-            .downArray
-            .downField("이력서1")
-            .withFocus(_.mapString(s => string))
-            .top
-            .get
+          json = json2json_update(
+            model.current_jsonkey.drop(1),
+            string
+          )(model.json)
         ),
         Cmd.None
       )

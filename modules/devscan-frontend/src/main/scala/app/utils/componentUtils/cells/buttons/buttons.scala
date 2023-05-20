@@ -19,7 +19,7 @@ enum Cell:
       depth: Int,
       key: String,
       current_depth: String,
-      current_jsonkey: List[String | Int],
+      current_jsonkey: List[String],
       model: Model
   ) extends Cell
   case None(data: String = "", css: String = "cell") extends Cell
