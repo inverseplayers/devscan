@@ -27,6 +27,15 @@ object Parser:
       .top
       .get
 
+  def cursor2cursor_selector(key: Int)(cursor: ACursor) =
+    key match
+      case 0 => cursor
+      case 1 => cursor.right
+      case _ =>
+        (1 to key).foldLeft(cursor) { (z, i) =>
+          z.right
+        }
+
   def cursor2cursor =
     (cursor: Option[ACursor], json: Json, key: String | Int) =>
       cursor match
@@ -36,15 +45,7 @@ object Parser:
               Some(json.hcursor.downField(key))
             case key: Int =>
               Some(
-                json.hcursor.downArray.pipe(cursor =>
-                  key match
-                    case 0 => cursor
-                    case 1 => cursor.right
-                    case _ =>
-                      (1 to key).foldLeft(cursor) { (z, i) =>
-                        z.right
-                      }
-                )
+                json.hcursor.downArray.pipe(cursor2cursor_selector(key))
               )
 
         case _ =>
@@ -53,15 +54,7 @@ object Parser:
               Some(cursor.get.downField(key))
             case key: Int =>
               Some(
-                cursor.get.downArray.pipe(cursor =>
-                  key match
-                    case 0 => cursor
-                    case 1 => cursor.right
-                    case _ =>
-                      (1 to key).foldLeft(cursor) { (z, i) =>
-                        z.right
-                      }
-                )
+                cursor.get.downArray.pipe(cursor2cursor_selector(key))
               )
 
   def cursor2json =
