@@ -47,6 +47,19 @@ object DepthUpdate:
         case _ =>
           (
             model.copy(
+              map_dom = model.copy().map_dom +
+                (
+                  model.current_jsonkey.toString()
+                  // List("s").toString()
+                    -> getJsonValue(model.copy().json, current_jsonkey.drop(1))
+                      .replaceAll(raw"""\\\"""", raw"")
+                      .replaceAll(raw"""\"""", raw"")
+                      .split(raw"\\n")
+                      .toList
+                      .map(d => {
+                        div(`class` := "pl-1")(d)
+                      })
+                ),
               current_jsonkey = current_jsonkey,
               current_jsonValue =
                 getJsonValue(model.json, current_jsonkey.drop(1)),

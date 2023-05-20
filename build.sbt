@@ -2,6 +2,7 @@ ThisBuild / organization := "org.inverseplayers"
 ThisBuild / version := "0.0.1-SNAPSHOT"
 ThisBuild / scalaVersion := V.Scala
 ThisBuild / scalafixDependencies += "com.github.liancheng" %% "organize-imports" % "0.6.0"
+// resolvers in ThisBuild += "Maven Central" at "https://repo1.maven.org/maven2/"
 
 val V = new {
   val tyrian = "0.6.2"
@@ -17,6 +18,8 @@ val Dependencies = new {
       "io.circe" %%% "circe-core" % V.circe,
       "io.circe" %%% "circe-generic" % V.circe,
       "io.circe" %%% "circe-parser" % V.circe
+      // "org.jsoup" %%% "jsoup" % "1.14.3"
+      // "com.github.mcallisto" %%% "scalajs-jsoup" % "1.14.3"
     )
   )
 }
@@ -53,6 +56,7 @@ lazy val devscanCats = (project in file("modules/devscan-cats"))
       "io.circe" %% "circe-parser" % V.circe,
       "io.circe" %% "circe-refined" % V.circe
     )
+    // resolvers += "Maven Central" at "https://repo1.maven.org/maven2/"
   )
 
 lazy val devscanFrontend = (project in file("modules/devscan-frontend"))
@@ -63,13 +67,18 @@ lazy val devscanFrontend = (project in file("modules/devscan-frontend"))
     version := "0.0.1",
     organization := "inverseplayers",
     scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) }
-
-    // 불필요한세팅
-    //   scalafixOnCompile := true,
-    //   semanticdbEnabled := true,
-    //   semanticdbVersion := scalafixSemanticdb.revision,
-    //   autoAPIMappings := true
   )
+lazy val parsetoFrontEnd = (project in file("modules/parseto-frontend"))
+  .enablePlugins(ScalaJSPlugin)
+  .settings(Dependencies.devscanFrontend)
+  .settings(
+    name := "parseto-frontend",
+    version := "0.0.1",
+    organization := "inverseplayers",
+    scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) }
+  )
+
+// .resolve(Seq("Maven Central" at "https://repo1.maven.org/maven2/"))
 lazy val testModule = (project in file("modules/test-module"))
   .settings(
     name := "text-module",

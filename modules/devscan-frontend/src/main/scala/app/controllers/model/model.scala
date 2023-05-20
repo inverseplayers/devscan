@@ -1,8 +1,10 @@
 package app
+import tyrian.Html.*
 
 import io.circe.Json
 import app.JsonData.jsonString
 import app.JsonData.*
+import tyrian.Html
 
 final case class Model(
     pointer: Int,
@@ -19,10 +21,16 @@ final case class Model(
       Map("Depth_9" -> true),
       Map("Depth_10" -> true)
     ),
-    json: Json = getJsonData(jsonString),
+    json: Json = getJsonData(testJson),
     current_depth: String = "0:",
-    current_jsonkey: List[String | Int] = List(),
+    current_jsonkey: List[String | Int] = List("s"),
     current_jsonValue: String = "",
     isOver: Boolean = false,
-    isMinimap: Boolean = false
+    isMinimap: Boolean = false,
+    dom: List[Html[Nothing]] = List(div(`class` := "pl-1")("a ")),
+    map_dom: Map[String, List[Html[Nothing]]] = Map(
+      List("s").toString() -> List(
+        div(`class` := "pl-1")("a ")
+      )
+    )
 )

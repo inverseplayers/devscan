@@ -18,14 +18,22 @@ object PageView:
           contentEditable := "true"
         )(
           {
-            model.current_jsonValue
-              .replaceAll(raw"""\\\"""", raw"")
-              .replaceAll(raw"""\"""", raw"")
-              .split(raw"\\n")
-              .toList
-              .map(d => {
-                div(`class` := "pl-1")(d)
-              })
+            println("model.dom")
+            println(model.current_jsonkey.toString())
+            println(model.dom)
+            val b = model.map_dom(model.current_jsonkey.toString())
+            // val b = model.map_dom(List("s").toString())
+            b
+            // b.toString()
+            // val x = model.current_jsonValue
+            //   .replaceAll(raw"""\\\"""", raw"")
+            //   .replaceAll(raw"""\"""", raw"")
+            //   .split(raw"\\n")
+            //   .toList
+            //   .map(d => {
+            //     div(`class` := "pl-1")(d)
+            //   })
+            // x
           }
         )
       )

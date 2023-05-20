@@ -8,5 +8,5 @@ object View:
   def view(model: Model): Html[Msg] =
     div(`class` := s"${Css.main}")(
       NavView.view(model),
-      PageView.view(model)
+      div(`class` := s"${model.current_jsonkey}")(PageView.view(model))
     )

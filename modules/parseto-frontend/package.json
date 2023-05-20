@@ -1,0 +1,14 @@
+{
+  "name": "parseto-frontend",
+  "source": "assets/index.html",
+  "scripts": {
+    "start": "parcel assets/index.html --no-cache --dist-dir dist --log-level info",
+    "build": "parcel build assets/index.html --dist-dir dist --log-level info"
+  },
+  "devDependencies": {
+    "parcel": "^2.1.0",
+    "postcss": "^8.4.21",
+    "process": "^0.11.10",
+    "tailwindcss": "^3.3.1"
+  }
+}
