@@ -14,6 +14,8 @@ object View:
 
         log2("parseJsonString1")(parseJsonString1)
 
-        div(`class` := s"${"text-white"}")("안녕")
+        div(`class` := s"${"text-white"}")(
+          parseJsonString1.toString
+        )
       }
     )
