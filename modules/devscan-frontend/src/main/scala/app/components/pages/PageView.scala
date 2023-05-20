@@ -1,9 +1,13 @@
 package app
+import scala.util.chaining.*
 import tyrian.*
 import cats.effect.IO
 import tyrian.Html.*
 import Css.*
 import app.JsonData.resume
+import parseto.common.parser.Parser.*
+import parseto.common.data.JsonString.ex_fruits
+import parseto.common.function.Log.*
 
 object PageView:
 
@@ -18,10 +22,15 @@ object PageView:
           contentEditable := "true"
         )(
           {
-            println("model.dom")
-            println(model.current_jsonkey.toString())
-            println(model.dom)
-            val b = model.map_dom(model.current_jsonkey.toString())
+            log2("model.json")(model.json)
+            log2("model.current_jsonkey")(model.current_jsonkey)
+            val b =
+              ex_fruits
+                .pipe(string2json)
+                .pipe(s =>
+                  json2string(model.json, model.current_jsonkey.drop(1))
+                )
+
             // val b = model.map_dom(List("s").toString())
             b
             // b.toString()

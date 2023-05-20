@@ -13,30 +13,10 @@ import app.JsonData.getJsonData
 import scala.util.chaining.*
 import io.circe.JsonObject
 import io.circe.parser.decode
+import parseto.common.parser.Parser.json2string
 
 object DepthUpdate:
-  def getJsonValue(json: Json, keys: List[String | Int]): String =
-    keys.length match
-      case 0 => json.toString
-      case _ =>
-        keys(0).toString() match
-          case d: String if !d.forall(_.isDigit) =>
-            getJsonValue(json.pipe(getObj)(d).get, keys.drop(1))
-          case d: String if d.forall(_.isDigit) =>
-            getJsonValue(
-              {
-                val a = json.fold(
-                  "null",
-                  _.toString,
-                  _.toString,
-                  _.toString,
-                  arr => s"${arr(d.toInt)}",
-                  obj => s"Object[${obj.size}]"
-                )
-                getJsonData(a)
-              },
-              keys.drop(1)
-            )
+
   def update(model: Model): DepthMsg => (Model, Cmd[IO, Msg]) =
     case DepthMsg.OnClick(
           depth: Int,
@@ -47,22 +27,22 @@ object DepthUpdate:
         case _ =>
           (
             model.copy(
-              map_dom = model.copy().map_dom +
-                (
-                  model.current_jsonkey.toString()
-                  // List("s").toString()
-                    -> getJsonValue(model.copy().json, current_jsonkey.drop(1))
-                      .replaceAll(raw"""\\\"""", raw"")
-                      .replaceAll(raw"""\"""", raw"")
-                      .split(raw"\\n")
-                      .toList
-                      .map(d => {
-                        div(`class` := "pl-1")(d)
-                      })
-                ),
+              // map_dom = model.copy().map_dom +
+              //   (
+              //     model.current_jsonkey.toString()
+              //     // List("s").toString()
+              //       -> json2string(model.copy().json, current_jsonkey.drop(1))
+              //         .replaceAll(raw"""\\\"""", raw"")
+              //         .replaceAll(raw"""\"""", raw"")
+              //         .split(raw"\\n")
+              //         .toList
+              //         .map(d => {
+              //           div(`class` := "pl-1")(d)
+              //         })
+              //   ),
               current_jsonkey = current_jsonkey,
               current_jsonValue =
-                getJsonValue(model.json, current_jsonkey.drop(1)),
+                json2string(model.json, current_jsonkey.drop(1)),
               current_depth = s"$depth:$key",
               depth = {
                 val a = model.depth.zipWithIndex.map((d, i) => {
