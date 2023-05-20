@@ -28,7 +28,9 @@ lazy val root = (project in file("."))
   .aggregate(
     devscanFrontend,
     devscanCats,
-    testModule
+    testModule,
+    parsetoCommon,
+    parsetoFrontEnd
   )
 
 lazy val devscanCats = (project in file("modules/devscan-cats"))
@@ -68,6 +70,7 @@ lazy val devscanFrontend = (project in file("modules/devscan-frontend"))
     organization := "inverseplayers",
     scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) }
   )
+
 lazy val parsetoFrontEnd = (project in file("modules/parseto-frontend"))
   .enablePlugins(ScalaJSPlugin)
   .settings(Dependencies.devscanFrontend)
@@ -77,6 +80,17 @@ lazy val parsetoFrontEnd = (project in file("modules/parseto-frontend"))
     organization := "inverseplayers",
     scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) }
   )
+  .dependsOn(parsetoCommon)
+
+lazy val parsetoCommon = (project in file("modules/parseto-common"))
+  .enablePlugins(ScalaJSPlugin)
+  // .settings(Dependencies.devscanFrontend)
+  .settings(
+    name := "parseto-common",
+    version := "0.0.1",
+    organization := "inverseplayers"
+  )
+// .dependsOn(parseto)
 
 // .resolve(Seq("Maven Central" at "https://repo1.maven.org/maven2/"))
 lazy val testModule = (project in file("modules/test-module"))
