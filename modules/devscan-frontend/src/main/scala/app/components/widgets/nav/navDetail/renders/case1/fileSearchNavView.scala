@@ -20,6 +20,6 @@ object FileSearchNavView:
     div(
       `class` := s"nav_detail $nav_detail ${model.isOver}"
     )(
-      div(`class` := s"json-area")(JsonParser.view(model))
+      div(`class` := s"json-area")(JsonTree.view(model))
       // Minimap.view(model)
     )
