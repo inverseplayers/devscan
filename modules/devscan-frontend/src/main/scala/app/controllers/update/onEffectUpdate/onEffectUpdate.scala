@@ -10,13 +10,9 @@ import tyrian.*
 import cats.effect.IO
 import app.ModelPipe.*
 import scala.concurrent.Future
-// import scala.scalajs.js.Promise
 import scala.scalajs.js.Thenable.Implicits._
 import scala.concurrent.Promise
-import parseto.common.parser.Parser.json2json_update
-import parseto.common.parser.Parser.string2json
-import parseto.common.function.Log.*
-// import app.Model.map_dom
+import app.parseto.common._api.*
 
 object OnEffectUpdate:
 
@@ -58,7 +54,8 @@ object OnEffectUpdate:
         model.copy(
           json = json2json_update(
             model.current_jsonkey.drop(1),
-            string
+            string,
+            None // [버그발견] export 한것을 받을때 , acc 가 default 로 있는데도 불구하고 파라미터를 요구한다.
           )(model.json)
         ),
         Cmd.None

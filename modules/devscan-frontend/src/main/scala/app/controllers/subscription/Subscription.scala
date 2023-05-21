@@ -16,7 +16,7 @@ import tyrian.*
 
 // import org.jsoup.nodes.{Document, Element}
 import scala.util.chaining.*
-import parseto.common.function.Log.*
+import app.parseto.common._api.*
 
 object Subscriptions:
   def subscriptions(model: Model): Sub[IO, Msg] =

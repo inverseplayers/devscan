@@ -3,8 +3,9 @@ import tyrian.Html.*
 
 import io.circe.Json
 import tyrian.Html
-import parseto.common.parser.Parser.*
-import parseto.common.data.JsonString.*
+// import parseto.common.parser.Parser.*
+import app.parseto.common._api.*
+// import app.parseto.common.parser.string2json
 
 final case class Model(
     pointer: Int,

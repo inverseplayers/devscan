@@ -1,4 +1,4 @@
-package parseto.common.parser
+package app.parseto.common.parser
 import scala.util.chaining.*
 import scala.scalajs.js.Dynamic.{global => g}
 import io.circe.{Json, JsonObject}

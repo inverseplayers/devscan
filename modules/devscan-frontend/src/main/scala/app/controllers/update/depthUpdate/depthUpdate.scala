@@ -11,7 +11,7 @@ import io.circe.Json
 import scala.util.chaining.*
 import io.circe.JsonObject
 import io.circe.parser.decode
-import parseto.common.parser.Parser.*
+import app.parseto.common._api.*
 
 object DepthUpdate:
 

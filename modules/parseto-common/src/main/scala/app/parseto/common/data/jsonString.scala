@@ -1,4 +1,4 @@
-package parseto.common.data
+package app.parseto.common.data
 
 object JsonString:
   val app = raw"""
