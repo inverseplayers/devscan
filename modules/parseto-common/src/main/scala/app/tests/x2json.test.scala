@@ -7,5 +7,8 @@ import parseto.common.function.Log.*
 
 object Tester:
   val test_json2string =
-    string2json(log(fruits)) // """{"과일": ["사과","딸기","포도","배"]}"""
-      .pipe(log(json2string_foldable(List("과일", "0")))) // "딸기"
+    fruits // """{"과일": ["사과","딸기","포도","배"]}"""
+      .pipe(string2json)
+      .pipe(log)
+      .pipe(json2string_foldable(List("과일", "0")))
+      .pipe(log) // "딸기"
