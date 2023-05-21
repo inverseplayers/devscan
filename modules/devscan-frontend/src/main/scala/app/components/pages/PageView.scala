@@ -18,11 +18,10 @@ object PageView:
           contentEditable := "true"
         )(
           {
-            log2("pageview.json2string key = list()")(
-              json2string_foldable(List("app", "구인"))(model.json)
-            )
-            // log2("model.current_jsonkey")(model.current_jsonkey)
-            json2string_foldable(model.current_jsonkey.tail)(model.json)
+            lazy_log()
+
+            model.json
+              .pipe(json2string_foldable(model.current_jsonkey.tail))
 
           }
         )
