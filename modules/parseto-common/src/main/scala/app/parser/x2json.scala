@@ -103,29 +103,29 @@ object Parser:
 
   def getObj(json: Json) = json.asObject.getOrElse(JsonObject.empty)
 
-  // (ex_fruits,List("과일"))
-  def json2string(json: Json, keys: List[String]): String =
+  def json2string_foldArray(key: Int)(json: Json) = json.fold(
+    "null",
+    _.toString,
+    _.toString,
+    _.toString,
+    arr => s"${arr(key)}",
+    obj => s"Object[${obj.size}]"
+  )
+  def json2json_foldObject(key: String)(json: Json) = json
+    .pipe(getObj)(key)
+    .get
+
+  def json2string(keys: List[String])(json: Json): String =
     keys.length match
       case 0 => json.toString
       case _ =>
         keys.head.toString().forall(_.isDigit) match
           case false =>
-            json2string(json.pipe(getObj)(keys.head).get, keys.tail)
+            json
+              .pipe(json2json_foldObject(keys.head))
+              .pipe(json2string(keys.tail))
           case true =>
-            json2string(
-              {
-                val a = json.fold(
-                  "null",
-                  _.toString,
-                  _.toString,
-                  _.toString,
-                  arr =>
-                    Logs.json2string_when_key_is_digit(
-                      s"${arr(keys.head.toInt)}"
-                    ),
-                  obj => s"Object[${obj.size}]"
-                )
-                string2json(a)
-              },
-              keys.tail
-            )
+            json
+              .pipe(json2string_foldArray(keys.head.toInt))
+              .pipe(string2json)
+              .pipe(json2string(keys.tail))

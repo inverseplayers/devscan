@@ -40,7 +40,7 @@ object DepthUpdate:
               //   ),
               current_jsonkey = current_jsonkey,
               current_jsonValue =
-                json2string(model.json, current_jsonkey.drop(1)),
+                model.json.pipe(json2string(current_jsonkey.tail)),
               current_depth = s"$depth:$key",
               depth = {
                 val a = model.depth.zipWithIndex.map((d, i) => {

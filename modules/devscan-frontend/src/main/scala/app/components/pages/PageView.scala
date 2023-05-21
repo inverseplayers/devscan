@@ -22,10 +22,10 @@ object PageView:
         )(
           {
             log2("pageview.json2string key = list()")(
-              json2string(model.json, List("app", "구인"))
+              json2string(List("app", "구인"))(model.json)
             )
             // log2("model.current_jsonkey")(model.current_jsonkey)
-            json2string(model.json, model.current_jsonkey.tail)
+            json2string(model.current_jsonkey.tail)(model.json)
 
           }
         )
