@@ -103,7 +103,7 @@ object Parser:
 
   def getObj(json: Json) = json.asObject.getOrElse(JsonObject.empty)
 
-  // getJsonValue(ex_fruits,List("과일"))
+  // (ex_fruits,List("과일"))
   def json2string(json: Json, keys: List[String]): String =
     keys.length match
       case 0 => json.toString
