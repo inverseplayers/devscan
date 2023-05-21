@@ -9,6 +9,7 @@ import parseto.common.data.JsonString.ex_fruits
 import parseto.common.function.Log.log
 import io.circe.ACursor
 import io.circe.HCursor
+import parseto.common.logs.Logs
 
 object Parser:
   def string_digit_2int(string: String): String | Int =
@@ -107,10 +108,10 @@ object Parser:
     keys.length match
       case 0 => json.toString
       case _ =>
-        keys(0).toString() match
-          case d: String if !d.forall(_.isDigit) =>
-            json2string(json.pipe(getObj)(d).get, keys.drop(1))
-          case d: String if d.forall(_.isDigit) =>
+        keys.head.toString().forall(_.isDigit) match
+          case false =>
+            json2string(json.pipe(getObj)(keys.head).get, keys.tail)
+          case true =>
             json2string(
               {
                 val a = json.fold(
@@ -118,10 +119,13 @@ object Parser:
                   _.toString,
                   _.toString,
                   _.toString,
-                  arr => s"${arr(d.toInt)}",
-                  obj => s"Object777[${obj.size}]"
+                  arr =>
+                    Logs.json2string_when_key_is_digit(
+                      s"${arr(keys.head.toInt)}"
+                    ),
+                  obj => s"Object[${obj.size}]"
                 )
                 string2json(a)
               },
-              keys.drop(1)
+              keys.tail
             )

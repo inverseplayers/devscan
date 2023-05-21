@@ -21,9 +21,11 @@ object PageView:
           contentEditable := "true"
         )(
           {
-            // log2("model.json")(model.json)
+            log2("pageview.json2string key = list()")(
+              json2string(model.json, List("app", "구인"))
+            )
             // log2("model.current_jsonkey")(model.current_jsonkey)
-            json2string(model.json, model.current_jsonkey.drop(1))
+            json2string(model.json, model.current_jsonkey.tail)
 
           }
         )
