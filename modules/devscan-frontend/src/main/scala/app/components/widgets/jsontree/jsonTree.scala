@@ -10,7 +10,7 @@ import app.CssCase.Target.*
 import app.CssCase.Color.*
 import app.CssCase.Point.*
 import app.CssCase.*
-import parseto.common.parser.JsonParser.*
+import app.parseto.common._api.*
 
 object JsonTree:
   def template(
@@ -44,7 +44,7 @@ object JsonTree:
           case true =>
             div()(
               {
-                pipeGetEntries(json).map((k, v) => {
+                json2kv_list(json).map((k, v) => {
                   template(
                     k,
                     v,

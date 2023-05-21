@@ -4,6 +4,18 @@ import scala.util.chaining.*
 
 def getObj(json: Json) = json.asObject.getOrElse(JsonObject.empty)
 
+def json2string_asType(json: Json) = json
+  .fold(
+    Json.Null,
+    _ => "JsonBoolean",
+    _ => "JsonNumber",
+    _ => "String",
+    _ => "JsonArray",
+    _ => "JsonObject"
+  )
+  .getClass
+  .getSimpleName
+
 def json2string_foldArray(key: Int)(json: Json) = json.fold(
   "null",
   _.toString,
@@ -12,6 +24,16 @@ def json2string_foldArray(key: Int)(json: Json) = json.fold(
   arr => s"${arr(key)}",
   obj => s"Object[${obj.size}]"
 )
+
+def getValue(json: Json) = json.fold(
+  "null",
+  _.toString,
+  _.toString,
+  _.toString,
+  arr => s"Array[${arr.length}]",
+  obj => s"Object[${obj.size}]"
+)
+
 def json2json_foldObject(key: String)(json: Json) = json
   .pipe(getObj)(key)
   .get
