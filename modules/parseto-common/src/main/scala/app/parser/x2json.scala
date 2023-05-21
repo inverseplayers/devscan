@@ -115,7 +115,7 @@ object Parser:
     .pipe(getObj)(key)
     .get
 
-  def json2string(keys: List[String])(json: Json): String =
+  def json2string_foldable(keys: List[String])(json: Json): String =
     keys.length match
       case 0 => json.toString
       case _ =>
@@ -123,9 +123,9 @@ object Parser:
           case false =>
             json
               .pipe(json2json_foldObject(keys.head))
-              .pipe(json2string(keys.tail))
+              .pipe(json2string_foldable(keys.tail))
           case true =>
             json
               .pipe(json2string_foldArray(keys.head.toInt))
               .pipe(string2json)
-              .pipe(json2string(keys.tail))
+              .pipe(json2string_foldable(keys.tail))

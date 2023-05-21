@@ -11,7 +11,7 @@ import io.circe.Json
 import scala.util.chaining.*
 import io.circe.JsonObject
 import io.circe.parser.decode
-import parseto.common.parser.Parser.json2string
+import parseto.common.parser.Parser.*
 
 object DepthUpdate:
 
@@ -40,7 +40,7 @@ object DepthUpdate:
               //   ),
               current_jsonkey = current_jsonkey,
               current_jsonValue =
-                model.json.pipe(json2string(current_jsonkey.tail)),
+                model.json.pipe(json2string_foldable(current_jsonkey.tail)),
               current_depth = s"$depth:$key",
               depth = {
                 val a = model.depth.zipWithIndex.map((d, i) => {
