@@ -21,16 +21,14 @@ object JsonTree:
       model: Model,
       current_jsonkey: List[String]
   ): Html[Msg] = {
-    val kv = s"$key : ${getValue(json)}"
     div(
       `class` := s"text-white"
-      // onClick()
     )(
       div(
       )(
         gen.cell(
           Cell.Json_Row(
-            indent + kv,
+            indent + s"$key : ${getValue(json)}",
             "cell",
             depth,
             key,

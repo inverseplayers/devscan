@@ -21,8 +21,8 @@ object PageView:
           contentEditable := "true"
         )(
           {
-            log2("model.json")(model.json)
-            log2("model.current_jsonkey")(model.current_jsonkey)
+            // log2("model.json")(model.json)
+            // log2("model.current_jsonkey")(model.current_jsonkey)
             json2string(model.json, model.current_jsonkey.drop(1))
 
           }

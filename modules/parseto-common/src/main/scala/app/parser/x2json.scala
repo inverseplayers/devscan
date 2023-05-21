@@ -103,7 +103,7 @@ object Parser:
   def getObj(json: Json) = json.asObject.getOrElse(JsonObject.empty)
 
   // getJsonValue(ex_fruits,List("과일"))
-  def json2string(json: Json, keys: List[String | Int]): String =
+  def json2string(json: Json, keys: List[String]): String =
     keys.length match
       case 0 => json.toString
       case _ =>
@@ -119,7 +119,7 @@ object Parser:
                   _.toString,
                   _.toString,
                   arr => s"${arr(d.toInt)}",
-                  obj => s"Object[${obj.size}]"
+                  obj => s"Object777[${obj.size}]"
                 )
                 string2json(a)
               },
