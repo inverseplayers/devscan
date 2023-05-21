@@ -13,7 +13,6 @@ import scala.concurrent.Future
 // import scala.scalajs.js.Promise
 import scala.scalajs.js.Thenable.Implicits._
 import scala.concurrent.Promise
-import app.JsonData.getJsonData
 import parseto.common.parser.Parser.json2json_update
 import parseto.common.parser.Parser.string2json
 import parseto.common.function.Log.*

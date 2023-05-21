@@ -6,7 +6,6 @@ import Css.*
 import scala.util.chaining.*
 import scala.scalajs.js.Dynamic.{global => g}
 import io.circe.{Json, JsonObject}
-import app.JsonData.*
 import app.CssCase.Target.*
 import app.CssCase.Color.*
 import app.CssCase.Point.*
@@ -90,8 +89,6 @@ object JsonParser:
                     indent + "ㅤ",
                     depth + 1,
                     model, {
-                      // println("current_jsonkey ::: List(k)")
-                      // println(current_jsonkey ::: List(key))
                       current_jsonkey ::: List(key)
                     }
                   )
@@ -104,4 +101,4 @@ object JsonParser:
   }
 
   def view(model: Model): Html[Msg] =
-    template("구인", model.json, "", 0, model, List())
+    template("root", model.json, "", 0, model, List())

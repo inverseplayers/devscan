@@ -4,7 +4,6 @@ import tyrian.*
 import cats.effect.IO
 import tyrian.Html.*
 import Css.*
-import app.JsonData.resume
 import parseto.common.parser.Parser.*
 import parseto.common.data.JsonString.ex_fruits
 import parseto.common.function.Log.*

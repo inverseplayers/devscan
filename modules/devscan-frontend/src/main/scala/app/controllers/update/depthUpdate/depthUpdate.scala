@@ -9,7 +9,6 @@ import cats.effect.IO
 import app.ModelPipe.*
 import io.circe.Json
 import app.JsonParser.getObj
-import app.JsonData.getJsonData
 import scala.util.chaining.*
 import io.circe.JsonObject
 import io.circe.parser.decode

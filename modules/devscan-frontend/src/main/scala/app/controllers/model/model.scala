@@ -2,8 +2,6 @@ package app
 import tyrian.Html.*
 
 import io.circe.Json
-import app.JsonData.jsonString
-import app.JsonData.*
 import tyrian.Html
 import parseto.common.parser.Parser.*
 import parseto.common.data.JsonString.*
@@ -23,7 +21,7 @@ final case class Model(
       Map("Depth_9" -> true),
       Map("Depth_10" -> true)
     ),
-    json: Json = string2json(ex_fruits),
+    json: Json = string2json(app),
     current_depth: String = "0:",
     current_jsonkey: List[String] = List("s"),
     current_jsonValue: String = "",
