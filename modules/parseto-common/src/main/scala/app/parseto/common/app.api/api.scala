@@ -7,7 +7,9 @@ export app.parseto.common.parser.{
   json2string_foldable,
   getValue,
   json2kv_list,
-  string2string
+  string2string,
+  string2List,
+  listString2dom
 }
 export app.parseto.common.function.logs.{log, log2}
 export app.parseto.common.data.JsonString.*
