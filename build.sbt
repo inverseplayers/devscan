@@ -27,6 +27,7 @@ val Dependencies = new {
       "io.circe" %%% "circe-core" % V.circe,
       "io.circe" %%% "circe-generic" % V.circe,
       "io.circe" %%% "circe-parser" % V.circe
+      // "io.indigoengine" %%% "tyrian-io" % V.tyrian
     )
   )
 }
@@ -96,7 +97,8 @@ lazy val parsetoCommon = (project in file("modules/parseto-common"))
   .settings(
     name := "parseto-common",
     version := "0.0.1",
-    organization := "inverseplayers"
+    organization := "inverseplayers",
+    scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) }
   )
 
 lazy val testModule = (project in file("modules/test-module"))
