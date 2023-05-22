@@ -26,8 +26,8 @@ val Dependencies = new {
     libraryDependencies ++= Seq(
       "io.circe" %%% "circe-core" % V.circe,
       "io.circe" %%% "circe-generic" % V.circe,
-      "io.circe" %%% "circe-parser" % V.circe
-      // "io.indigoengine" %%% "tyrian-io" % V.tyrian
+      "io.circe" %%% "circe-parser" % V.circe,
+      "io.indigoengine" %%% "tyrian-io" % V.tyrian
     )
   )
 }

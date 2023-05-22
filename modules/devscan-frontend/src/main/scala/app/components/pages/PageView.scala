@@ -19,9 +19,14 @@ object PageView:
         )(
           {
             lazy_log()
-
-            model.json
-              .pipe(json2string_foldable(model.current_jsonkey.tail))
+            //
+            List(
+              model.json
+                .pipe(json2string_foldable(model.current_jsonkey.tail))
+                .pipe(string2string),
+              raw"안녕하세요 \n 제이름은 \n ooo 입니다."
+                .pipe(string2string)
+            )(1)
 
           }
         )
