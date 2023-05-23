@@ -20,20 +20,18 @@ object PageView:
           {
             // lazy_log()
             List(
-              model.json
-                .pipe(json2string_foldable(model.current_jsonkey.tail))
-                .pipe(string2string)
-                .pipe(string2List)
-                .pipe(listString2dom),
-              // raw"~~~~안녕하세요 \n 제이름은 \n ooo 입니다."
+              model
+                .pipe(json2dom),
               raw"     ~~~~안녕하세요     my name is.."
                 .pipe(string2string)
                 .pipe(string2List)
                 .tap(
                   log
                 )
-                .pipe(listString2dom)
-            )(0)
+                .pipe(listString2dom),
+              List(v),
+              List(pre(vstring))
+            )(3)
           }
         )
       )
