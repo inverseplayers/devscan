@@ -9,11 +9,12 @@ export app.parseto.common.parser.{
   json2kv_list,
   string2string,
   string2List,
-  listString2dom
+  listString2dom,
+  listToHtml
 }
 export app.parseto.common.function.logs.{log, log2}
 export app.parseto.common.data.JsonString.*
-export scala.util.chaining.*
+// export scala.util.chaining.*
 
 object API:
   val a = "api..."

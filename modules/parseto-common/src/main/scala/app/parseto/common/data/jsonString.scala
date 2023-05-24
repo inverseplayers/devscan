@@ -1,12 +1,14 @@
 package app.parseto.common.data
 
 object JsonString:
-  val 이력서1 = raw"""안녕하세요 \n 제이름은 \n ooo 입니다."""
+  val scala =
+    raw"""package app.parseto.common.parser \n import io.circe.parser.*"""
+  val 이력서2 = raw"""안녕하세요 \n 제이름은 \n ooo 입니다."""
   val app = raw"""
   {
     "app": {
       "구인": {
-        "프론트엔드":  [{"이력서1": "${이력서1}"}, {"이력서2" : "내용"}],
+        "프론트엔드":  [{"scala": "${scala}"}, {"이력서2" : "${이력서2}"}],
         "벡엔드":  [{"이력서1": "내용"}, {"이력서2" : "내용"}]
       },
       "구직": {
