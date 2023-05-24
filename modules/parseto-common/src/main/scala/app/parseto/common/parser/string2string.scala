@@ -28,5 +28,12 @@ def listToHtml(l: List[String]) =
     )
   )
 
-def genLine(lines: List[String]) = lines.map(d => div(d))
-def genSyntax(lines: List[String]) = lines.map(d => div(d))
+def genLine(lines: List[String]) = lines.map(str => div(genSyntax(str)))
+def genSyntax(line: String) = line
+  .split(raw" ")
+  .toList
+  .map(s =>
+    s match
+      case "package" | "import" => span(style := "color: #569cd6;")(s" $s")
+      case _                    => span(s" $s")
+  )
