@@ -29,8 +29,8 @@ object DepthUpdate:
       val options = js.Dictionary[js.Any](
         "lineNumbers" -> true,
         "tabSize" -> 2,
-        "mode" -> "javascript",
-        "theme" -> "monokai"
+        "mode" -> "javascript"
+        // "theme" -> "monokai"
       )
       val editor = CodeMirror(editorElement, options)
       editor.getValue()
@@ -38,6 +38,7 @@ object DepthUpdate:
         model.json.pipe(
           json2string_foldable(current_jsonkey.tail)
         )
+        // "var a = 1"
       )
       depth match
         case _ =>
