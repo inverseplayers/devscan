@@ -21,6 +21,24 @@ object DepthUpdate:
           key: String,
           current_jsonkey: List[String]
         ) =>
+      val editorElement = document.querySelector(".dom-input")
+      editorElement.innerHTML = ""
+      log2("editorContainer")(editorElement)
+      log2("editorContainer")(document)
+
+      val options = js.Dictionary[js.Any](
+        "lineNumbers" -> true,
+        "tabSize" -> 2,
+        "mode" -> "javascript",
+        "theme" -> "monokai"
+      )
+      val editor = CodeMirror(editorElement, options)
+      editor.getValue()
+      editor.setValue(
+        model.json.pipe(
+          json2string_foldable(current_jsonkey.tail)
+        )
+      )
       depth match
         case _ =>
           (

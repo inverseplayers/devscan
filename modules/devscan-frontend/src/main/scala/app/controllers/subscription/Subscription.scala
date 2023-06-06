@@ -3,6 +3,24 @@ import tyrian.Html.*
 import cats.effect.IO
 import org.scalajs.dom.*
 import tyrian.*
+import scala.scalajs.js
+import scala.scalajs.js.annotation.JSGlobal
+
+@js.native
+@JSGlobal("CodeMirror")
+object CodeMirror extends js.Object {
+  def apply(
+      element: js.Any,
+      options: js.Dictionary[js.Any]
+  ): CodeMirrorInstance = js.native
+}
+
+@js.native
+trait CodeMirrorInstance extends js.Object {
+  def getValue(): String = js.native
+  def setValue(value: String): Unit = js.native
+}
+
 // import com.github.mcallisto.scalajs.Jsoup
 // import org.jsoup.Jsoup
 // import org.jsoup
@@ -29,38 +47,34 @@ object Subscriptions:
             "keydown",
             element
           ) { e =>
-            // val pattern = """(?<=<div.*?>).*?(?=<\/div>)""".r
-
-            val _element2 = log2("element.innerHTML")(element.innerHTML)
-            val _element = log2("element.innerText")(element.innerText)
-            // element.oncopy.getClass("text/plain")
-            //   pattern
-            //     .findAllIn(element.outerHTML)
-            //     .toList
-            //     .mkString("\n")
-            //     .replaceAll("<br>", "\n")
-
-            // println("element")
-            // println(element.innerHTML)
-            // println(element.outerHTML.replaceAll("<[^>]*>", ""))
+            // (e.ctrlKey || e.metaKey) && e.key == "s" match
+            //   case true =>
+            //     e.preventDefault();
+            //     Some(
+            //       OnEffectMsg.On_KeyUp_Json(
+            //         element
+            //           .tap(e => log2("e.innerHTML")(e.innerHTML))
+            //           .tap(e => log2("e.innerText")(e.innerText))
+            //           .pipe(_.innerText)
+            //       )
+            //     )
+            //   case _ => Some(OnEffectMsg.None)
             (e.ctrlKey || e.metaKey) && e.key == "s" match
               case true =>
-                // element.innerHTML = ""
-                // element.innerHTML = _element
-                //   .replaceAll(raw"""\\\"""", raw"")
-                //   .replaceAll(raw"""\"""", raw"")
-                //   .split(raw"\\n")
-                //   .toList
-                //   .map(d => {
-                //     div(`class` := "pl-1")(d)
-                //   })
-                //   .toString()
-                e.preventDefault();
-                Some(
-                  OnEffectMsg.On_KeyUp_Json(
-                    log2("element.innerHTML")(_element)
+                val options = js.Dictionary[js.Any](
+                  "lineNumbers" -> true,
+                  "tabSize" -> 2,
+                  "mode" -> "javascript",
+                  "theme" -> "monokai"
+                )
+                val editor = CodeMirror(element, options)
+                editor.getValue()
+                editor.setValue(
+                  model.json.pipe(
+                    json2string_foldable(model.current_jsonkey.tail)
                   )
                 )
+                Some(OnEffectMsg.None)
               case _ => Some(OnEffectMsg.None)
           }
     )

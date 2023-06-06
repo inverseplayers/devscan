@@ -1,5 +1,10 @@
 package app.parseto.common.parser
+import scala.util.matching.Regex
+
 import tyrian.Html.*
+import scala.util.chaining.*
+import app.parseto.common.function.logs.log2
+import app.parseto.common.function.logs.log
 
 def string2string(s: String) = s
   // .replaceAll(raw"""\\\"""", raw"") // " \"안녕\"  " => " 안녕  "
@@ -27,13 +32,35 @@ def listToHtml(l: List[String]) =
       )
     )
   )
+def splitInput(input: String): List[String] =
+  input
+    .pipe(log2("인풋"))
+    .split(" ")
+    .pipe(log2("인풋2"))
+    .map { element =>
+      val spacing = element.length match {
+        case 0 => ""
+        case _ => " " * element.length
+      }
+      spacing + element
+    }
+    .pipe(log2("인풋3"))
+    .toList
+    .pipe(log2("인풋4"))
 
 def genLine(lines: List[String]) = lines.map(str => div(genSyntax(str)))
-def genSyntax(line: String) = line
-  .split(raw" ")
-  .toList
-  .map(s =>
-    s match
-      case "package" | "import" => span(style := "color: #569cd6;")(s" $s")
-      case _                    => span(s" $s")
-  )
+def genSyntax(line: String) =
+  // "(?=\\s)|(?<=\\s)".r
+  splitInput(line)
+    // .split(line)
+    // line
+    // // .replaceAll(" ", raw" &nbsp; ")
+    // .split("\\s+")
+    .pipe(a => a)
+    .toList
+    .pipe(log2("뭐지?"))
+    .map(s =>
+      s match
+        case "package" | "import" => span(style := "color: #569cd6;")(s"$s")
+        case _                    => span(s"$s")
+    )

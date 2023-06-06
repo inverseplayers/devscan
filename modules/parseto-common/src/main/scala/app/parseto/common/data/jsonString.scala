@@ -1,8 +1,22 @@
 package app.parseto.common.data
 
 object JsonString:
+  val sample = "    "
+  val sample2 = "&nbsp;"
+
+  // https://codepen.io/edgenard/pen/mEWeNX // 코드미러 쓰자
   val scala =
-    raw"""package app.parseto.common.parser \n import io.circe.parser.*"""
+    raw"""package  app.parseto.common.parser \n\n\n\n import io.circe.parser.*"""
+// List(  , package,   , a,   , p,  , p.parseto.common.parser,  )
+
+  val scala2 = raw"""
+     package app.parseto.common.parser 
+ 
+ 
+ 
+ import io.circe.parser.*
+  """
+
   val 이력서2 = raw"""안녕하세요 \n 제이름은 \n ooo 입니다."""
   val app = raw"""
   {
