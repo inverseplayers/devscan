@@ -25,7 +25,10 @@
 .CodeMirror {
     font-family: monospace;
     /* height: 600px !important; */
-    color: black;
+    /* color: rgb(215, 213, 213); */
+
+    /* custom:color */
+    color: #51ff00b8;
   }
   
   /* PADDING */
@@ -38,6 +41,7 @@
   }
   
   .CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler {
+    /* background-color: white;  */
     background-color: white; /* The little square between H and V scrollbars */
   }
   
@@ -45,7 +49,9 @@
   
   .CodeMirror-gutters {
     border-right: 1px solid #ddd;
-    background-color: #f7f7f7;
+
+    /* 라인 */
+    background-color: #35354c;
     white-space: nowrap;
     /* margin: 1px !important; */
   }
@@ -143,7 +149,11 @@
   .cm-s-default .cm-variable-2 {color: #05a;}
   .cm-s-default .cm-variable-3 {color: #085;}
   .cm-s-default .cm-comment {color: #a50;}
-  .cm-s-default .cm-string {color: #a11;}
+  .cm-s-default .cm-string {
+    /* custom:color */
+    /* color: rgb(180, 160, 160); */
+    color: #51ff00b8;;
+  }
   .cm-s-default .cm-string-2 {color: #f50;}
   .cm-s-default .cm-meta {color: #555;}
   .cm-s-default .cm-qualifier {color: #555;}
@@ -174,7 +184,7 @@
   .CodeMirror {
     position: relative;
     overflow: hidden;
-    background: white;
+    background: rgba(4, 3, 12, 0);
   }
   
   .CodeMirror-scroll {
@@ -338,10 +348,14 @@
     visibility: visible;
   }
   
-  .CodeMirror-selected { background: #d9d9d9; }
-  .CodeMirror-focused .CodeMirror-selected { background: #d7d4f0; }
+  /* .CodeMirror-selected { background: #a41414; } */
+  .CodeMirror-selected { 
+    /* custom:bg-selectedline */
+    background: #090101df; 
+  }
+  .CodeMirror-focused .CodeMirror-selected {background: #090101df; }
   .CodeMirror-crosshair { cursor: crosshair; }
-  .CodeMirror-line::selection, .CodeMirror-line > span::selection, .CodeMirror-line > span > span::selection { background: #d7d4f0; }
+  .CodeMirror-line::selection, .CodeMirror-line > span::selection, .CodeMirror-line > span > span::selection { background: #666381; }
   .CodeMirror-line::-moz-selection, .CodeMirror-line > span::-moz-selection, .CodeMirror-line > span > span::-moz-selection { background: #d7d4f0; }
   
   .cm-searching {
