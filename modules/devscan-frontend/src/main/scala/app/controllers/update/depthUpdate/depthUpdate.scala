@@ -40,6 +40,7 @@ object DepthUpdate:
         )
         // "var a = 1"
       )
+
       depth match
         case _ =>
           (
