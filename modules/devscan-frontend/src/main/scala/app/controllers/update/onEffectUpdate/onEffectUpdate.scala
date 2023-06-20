@@ -54,7 +54,8 @@ object OnEffectUpdate:
         model.copy(
           json = json2json_update(
             model.current_jsonkey.drop(1),
-            string,
+            // string,
+            model.editorString,
             None // [버그발견] export 한것을 받을때 , acc 가 default 로 있는데도 불구하고 파라미터를 요구한다.
           )(model.json)
         ),

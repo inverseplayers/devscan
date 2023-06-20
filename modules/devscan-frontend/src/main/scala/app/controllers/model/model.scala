@@ -33,5 +33,7 @@ final case class Model(
       List("s").toString() -> List(
         div(`class` := "pl-1")("a ")
       )
-    )
+    ),
+    editor: CodeMirrorInstance,
+    editorString: String = ""
 )

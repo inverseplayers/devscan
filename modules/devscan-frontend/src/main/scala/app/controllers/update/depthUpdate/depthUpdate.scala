@@ -23,8 +23,8 @@ object DepthUpdate:
         ) =>
       val editorElement = document.querySelector(".dom-input")
       editorElement.innerHTML = ""
-      log2("editorContainer")(editorElement)
-      log2("editorContainer")(document)
+      // log2("editorContainer")(editorElement)
+      // log2("editorContainer")(document)
 
       val options = js.Dictionary[js.Any](
         "lineNumbers" -> true,
@@ -32,14 +32,17 @@ object DepthUpdate:
         "mode" -> "javascript"
         // "theme" -> "monokai"
       )
-      val editor = CodeMirror(editorElement, options)
-      editor.getValue()
+      val editor: CodeMirrorInstance = CodeMirror(editorElement, options)
+
       editor.setValue(
         model.json.pipe(
           json2string_foldable(current_jsonkey.tail)
         )
         // "var a = 1"
       )
+
+      log2("eeee")(editor.getValue())
+      // log2("editor.getValue()")(editor.getValue())
 
       depth match
         case _ =>
@@ -73,7 +76,9 @@ object DepthUpdate:
                     case false => d
                 })
                 a
-              }
+              },
+              editor = editor,
+              editorString = editor.getValue()
             ),
             Cmd.None
           )

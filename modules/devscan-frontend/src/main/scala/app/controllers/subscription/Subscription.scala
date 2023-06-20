@@ -6,20 +6,20 @@ import tyrian.*
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
 
-@js.native
-@JSGlobal("CodeMirror")
-object CodeMirror extends js.Object {
-  def apply(
-      element: js.Any,
-      options: js.Dictionary[js.Any]
-  ): CodeMirrorInstance = js.native
-}
+// @js.native
+// @JSGlobal("CodeMirror")
+// object CodeMirror extends js.Object {
+//   def apply(
+//       element: js.Any,
+//       options: js.Dictionary[js.Any]
+//   ): CodeMirrorInstance = js.native
+// }
 
-@js.native
-trait CodeMirrorInstance extends js.Object {
-  def getValue(): String = js.native
-  def setValue(value: String): Unit = js.native
-}
+// @js.native
+// trait CodeMirrorInstance extends js.Object {
+//   def getValue(): String = js.native
+//   def setValue(value: String): Unit = js.native
+// }
 
 // import com.github.mcallisto.scalajs.Jsoup
 // import org.jsoup.Jsoup
@@ -39,7 +39,7 @@ import app.parseto.common._api.*
 object Subscriptions:
   def subscriptions(model: Model): Sub[IO, Msg] =
     Sub.Batch(
-      Option(Dom.select("dom-input")) match
+      Option(document.querySelector(".dom-input")) match
         case None => Sub.None
 
         case Some(element) =>
@@ -61,20 +61,23 @@ object Subscriptions:
             //   case _ => Some(OnEffectMsg.None)
             (e.ctrlKey || e.metaKey) && e.key == "s" match
               case true =>
-                val options = js.Dictionary[js.Any](
-                  "lineNumbers" -> true,
-                  "tabSize" -> 2,
-                  "mode" -> "javascript",
-                  "theme" -> "monokai"
-                )
-                val editor = CodeMirror(element, options)
-                editor.getValue()
-                editor.setValue(
-                  model.json.pipe(
-                    json2string_foldable(model.current_jsonkey.tail)
-                  )
-                )
-                Some(OnEffectMsg.None)
+                // val editorElement = document.querySelector(".dom-input")
+
+                // val options = js.Dictionary[js.Any](
+                //   "lineNumbers" -> true,
+                //   "tabSize" -> 2,
+                //   "mode" -> "javascript"
+                //   // "theme" -> "monokai"
+                // )
+                // val editor = CodeMirror(editorElement, options)
+
+                // // editor.setValue(
+                // //   model.json.pipe(
+                // //     json2string_foldable(model.current_jsonkey.tail)
+                // //   )
+                // // )
+                log2("ddd")(model.editorString)
+                Some(OnEffectMsg.On_KeyUp_Json(model.editorString))
               case _ => Some(OnEffectMsg.None)
           }
     )
