@@ -7,10 +7,6 @@ import app.parseto.common._api.*
 
 object View:
   def view(model: Model): Html[Msg] =
-    div(`class` := s"${"bg-black h-screen w-screen"}")(
-      {
-        div(`class` := s"${"text-white"}")(
-          "parseJsonString1.toString"
-        )
-      }
+    div(`class` := s"")(
+      PageView.view(model)
     )
